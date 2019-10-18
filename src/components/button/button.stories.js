@@ -1,25 +1,22 @@
 import React from 'react'
+import { storiesOf } from '@storybook/react';
 import { action } from '@storybook/addon-actions'
-import { Button } from './button.component'
+import Button from './button.component'
 
 export default {
   title: 'Button',
 }
 
-export const withText = () => {
-  return (
+storiesOf('Button')
+  .add('with text', () => (
     <Button
-      label='Goodbye World'
+      label='Goodnight World'
       onClick={action('clicked')}
     />
-  )
-}
-
-export const withEmoji = () => {
-  return (
+  ))
+  .add('with emoji', () => (
     <Button
       label='💯'
       onClick={action('clicked')}
     />
-  )
-}
+  ));
