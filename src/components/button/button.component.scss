@@ -1,5 +1,113 @@
+@import '../../styles/variables';
+
+@mixin buttonTheme($background--base, $text-color--base, $background--hover, $text-color--hover) {
+  background-color: $background--base;
+  color: $text-color--base;
+
+  &:hover, &:focus {
+    background: $background--hover;
+    color: $text-color--hover;
+  }
+
+  &.button--loading {
+    &:focus {
+      background: $background--base;
+    }
+
+    &:before {
+      border-color: rgba($text-color--base, .3);
+    }
+  }
+
+  &:disabled,
+  &.button--disabled {
+    background: $background--base;
+    color: rgba($text-color--base, .3);
+  }
+}
+
 .button {
   display: inline-block;
+  opacity: 1;
+  height: gux(4);
   border: none;
-  line-height: 30px;
+  border-radius: $border-radius--small;
+  padding: 0 gux(1.5);
+  font-family: inherit;
+  text-align: center;
+  text-transform: uppercase;
+  transition: $transition-duration--default $transition-timing-function--default;
+  cursor: pointer;
+
+  @include buttonTheme($envy, white, mix($envy, black, 90%), white);
+
+  & + & {
+    margin-left: $grid-unit;
+  }
+
+  &:focus {
+    outline: none;
+  }
+
+  &_icon, &_label {
+    pointer-events: none;
+  }
+
+  &_icon + .button_label {
+    margin-left: gux();
+  }
+
+  &--square, &--circle {
+    padding: 0;
+    width: 30px;
+  }
+
+  &--circle {
+    border-radius: $border-radius--circle;
+  }
+
+  &--small {
+    height: gux(3);
+  }
+
+  &--small.button--square,
+  &--small.button--circle {
+    width: gux(3);
+  }
+
+  &--large {
+    height: gux(5);
+  }
+
+  &--large.button--square,
+  &--large.button--circle {
+    width: gux(5);
+
+    .button_icon {
+      font-size: gux(3);
+    }
+  }
+
+  &--wide {
+    padding: 0 gux(3);
+  }
+
+  &--cancel,
+  &--transparent {
+    @include buttonTheme(transparent, $light-slate, transparent, white);
+  }
+
+  &--invisible {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &--hidden {
+    display: none;
+  }
+
+  &:disabled,
+  &--disabled {
+    pointer-events: none;
+  }
 }

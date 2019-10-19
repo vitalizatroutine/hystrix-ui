@@ -1,0 +1,17 @@
+.frame {
+  display: flex;
+  height: 100%;
+  max-height: 40vh;
+  background-color: #F8F8F8; }
+  .frame--horizontally-left {
+    justify-content: flex-start; }
+  .frame--horizontally-center {
+    justify-content: center; }
+  .frame--horizontally-right {
+    justify-content: flex-end; }
+  .frame--vertically-left {
+    align-items: flex-start; }
+  .frame--vertically-center {
+    align-items: center; }
+  .frame--vertically-right {
+    align-items: flex-end; }

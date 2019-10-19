@@ -1,0 +1,36 @@
+@import '../../styles/variables';
+
+.frame {
+  display: flex;
+  height: 100%;
+  max-height: 40vh;
+  background-color: $off-white;
+
+  &--horizontally {
+    &-left {
+      justify-content: flex-start;
+    }
+
+    &-center {
+      justify-content: center;
+    }
+
+    &-right {
+      justify-content: flex-end;
+    }
+  }
+
+  &--vertically {
+    &-left {
+      align-items: flex-start;
+    }
+
+    &-center {
+      align-items: center;
+    }
+
+    &-right {
+      align-items: flex-end;
+    }
+  }
+}

@@ -1,0 +1,90 @@
+// Global Variables
+//-------------------------------------//
+
+// Colors
+//-------------------------------------//
+$envy: #e50c3a;
+$slate: #262626;
+$mine-shaft: #333333;
+$dark-slate: #131313;
+$midnight-slate: #121212;
+$blue: #0066CC;
+$red: #CC0000;
+$silver: #999999;
+$light-slate: #E6E6E6;
+$off-white: #F8F8F8;
+
+
+// Media Query Breakpoints
+//-------------------------------------//
+$screen--mobile: 480px;
+$screen--small: 768px;
+$screen--medium: 1366px;
+$screen--large: 1920px;
+
+
+// Max-Width Breakpoints
+//-------------------------------------//
+$max-width--default: 980px;
+$max-width--narrow: 800px;
+
+
+// Fonts and Line Heights
+//-------------------------------------//
+$font-family--base: 'Roboto', sans-serif;
+
+$font-weight--light: 300;
+$font-weight--normal: 400;
+$font-weight--bold: 600;
+$font-weight--black: 800;
+
+$font-size--base: 13px;
+
+$font-size--small: 11px;
+$font-size--medium: 18px;
+$font-size--icon: 24px;
+$font-size--large: 30px;
+
+$line-height--base: 1.3;
+$line-height--large: 1.5;
+
+
+// Common UI Variables
+//-------------------------------------//
+$grid-unit: 8px;
+
+$border-radius--small: 3px;
+$border-radius--medium: 5px;
+$border-radius--large: 8px;
+$border-radius--circle: 50%;
+
+$box-shadow--default: 0 $grid-unit $grid-unit rgba($dark-slate, 0.1);
+$box-shadow--light: 0 #{$grid-unit / 4} $grid-unit rgba(0, 0, 0, 0.5);
+
+
+// Z-Space Management
+//-------------------------------------//
+$z-index--base: 0;
+$z-index--level-one: $z-index--base + 5;
+$z-index--level-two: $z-index--base + 10;
+$z-index--level-three: $z-index--base + 15; // used for global app header
+$z-index--mask: 50;
+$z-index--modal-level-one: $z-index--mask + 5;
+$z-index--modal-level-two: $z-index--mask + 10;
+$z-index--modal-level-three: $z-index--mask + 15; // used for global toast notification
+
+
+// Animations
+//-------------------------------------//
+$transition-duration--quick: 0.2s;
+$transition-duration--default: 0.3s;
+$transition-timing-function--default: ease;
+
+
+// F u n c t i o n s
+//-------------------------------------//
+
+// Grid-Unit multiplier
+@function gux($multiplier: 1) {
+  @return $grid-unit * $multiplier;
+}
