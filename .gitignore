@@ -3,6 +3,5 @@ node_modules
 *.log
 temp
 .eslintcache
-.storybook
 dist
 package-lock.json
