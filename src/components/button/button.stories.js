@@ -19,4 +19,5 @@ storiesOf('Button', module).add('Default', () => (
 
 export default {
   title: 'Button',
+  component: Button
 }

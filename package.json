@@ -6,11 +6,12 @@
   "scripts": {
     "start": "npm-run-all -p watch-css storybook",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "build": "webpack  --mode=production",
+    "build": "npm-run-all -p build-module build-storybook",
+    "build-module": "webpack  --mode=production",
     "build-css": "node-sass src/ -o src/",
     "watch-css": "npm run build-css && node-sass src/ -o src/ --watch --recursive",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook"
+    "build-storybook": "build-storybook -c .storybook -o docs/storybook"
   },
   "repository": {
     "type": "git",
