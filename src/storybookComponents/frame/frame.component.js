@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { gridUnit, getClassName } from '../../utils/ui/index'
 import './frame.component.css'
@@ -45,4 +45,4 @@ Frame.defaultProps = {
   verticalAlign: 'center'
 }
 
-export default Frame
+export default memo(Frame)
