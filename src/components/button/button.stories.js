@@ -2,19 +2,24 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
-import { Frame } from '../../storybookComponents/index'
+import { Customizer } from '../../storybookComponents'
 import Button from './button.component'
 
+const buttonConfig = [
+  {
+    field: 'label',
+    type: 'text',
+    initialValue: 'Goodnight World'
+  },
+  {
+    field: 'icon',
+    type: 'text',
+    initialValue: '😴'
+  }
+]
+
 storiesOf('Button', module).add('Default', () => (
-  <Frame horizontalAlign='center' verticalAlign='center'>
-    <Button
-      size='large'
-      wide
-      label='Goodnight World'
-      icon='😴'
-      onClick={action('Button has been clicked')}
-    />
-  </Frame>
+  <Customizer config={buttonConfig} component={<Button/>} />
 ))
 
 export default {

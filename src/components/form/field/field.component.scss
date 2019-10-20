@@ -1,0 +1,75 @@
+@import '../../../styles/variables';
+
+$input-height--small: gux(3);
+$input-height--default: gux(4);
+$input-height--large: gux(5);
+
+.field {
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  text-align: left;
+
+  &_label {
+    display: block;
+    margin-bottom: gux(0.5);
+  }
+
+  &_input {
+    display: inline-block;
+    width: 100%;
+    height: gux(4);
+    padding: 0 gux(2);
+    border: none;
+    background: $light-slate;
+    font-family: $font-family--base;
+    font-weight: $font-weight--normal;
+    color: $slate;
+    line-height: $input-height--default;
+
+    &::placeholder {
+      font-family: $font-family--base;
+    }
+
+    &:focus {
+      outline: none;
+      border-bottom: 1px solid $envy;
+    }
+
+    &:read-only {
+      color: rgba($slate, 0.3);
+    }
+
+    &[type='number']::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+    }
+  }
+
+
+
+  &--small.field--text,
+  &--small.field--password,
+  &--small.field--number {
+    .field {
+      &_input {
+        height: gux(3)
+      }
+    }
+  }
+
+  &--large.field--text,
+  &--large.field--password,
+  &--large.field--number {
+    .field {
+      &_input {
+        height: gux(5)
+      }
+    }
+  }
+
+  textarea {
+    min-height: 100px;
+    max-height: 300px;
+    resize: none;
+  }
+}

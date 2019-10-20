@@ -1,0 +1,218 @@
+//@import '../../../../resources/styles/variables';
+//@import '../../../../resources/styles/mixins/icons';
+//@import '../../../../resources/styles/icons/variables';
+//
+//@mixin checkboxTheme($textColor, $checkedTextColor, $backgroundColor, $checkedBackgroundColor) {
+//  .checkbox_label {
+//    &:before, &:after {
+//      background-color: $backgroundColor;
+//      color: $textColor;
+//    }
+//  }
+//
+//  &.checkbox--checked {
+//    .checkbox_label:before, .checkbox_label:after {
+//      background-color: $checkedBackgroundColor;
+//      color: $checkedTextColor;
+//    }
+//  }
+//}
+//
+//.checkbox {
+//  &_label {
+//    display: inline-block;
+//    line-height: $label-height-base;
+//    user-select: none;
+//    white-space: nowrap;
+//
+//    &:before, &:after {
+//      content: '';
+//      display: inline-block;
+//      width: 18px;
+//      height: 18px;
+//      padding-top: 1px;
+//      line-height: 18px;
+//      border-radius: $border-radius-small;
+//      font-size: 11px;
+//      text-align: center;
+//      vertical-align: text-bottom;
+//      transition: background-color 0.3s ease, color 0.3s ease;
+//      cursor: pointer;
+//    }
+//
+//    &--right {
+//      @include q4-icon($q4i-checkmark-4pt);
+//      line-height: $label-height-base;
+//
+//      &:before {
+//        margin-right: $padding-horizontal-icon;
+//      }
+//
+//      &:after {
+//        display: none;
+//      }
+//    }
+//
+//    &--left {
+//      @include q4-icon-after($q4i-checkmark-4pt);
+//      line-height: $label-height-base;
+//
+//      &:before {
+//        display: none;
+//      }
+//
+//      &:after {
+//        margin-left: $padding-horizontal-icon;
+//      }
+//    }
+//  }
+//
+//  &_input {
+//    display: none;
+//  }
+//
+//  &--inline {
+//    display: inline-block;
+//
+//    &:not(:first-child) {
+//      margin-left: $padding-horizontal-xsmall;
+//    }
+//  }
+//
+//  &--dark {
+//    @include checkboxTheme(transparent, $dark-slate, $dark-slate, $citrus);
+//  }
+//
+//  &--light {
+//    @include checkboxTheme(transparent, $white, $light-grey, $rain);
+//  }
+//
+//  &--light-slate {
+//    @include checkboxTheme(transparent, $white, $light-slate, $citrus);
+//  }
+//
+//  &--soft-grey {
+//    @include checkboxTheme(transparent, $white, $soft-grey, $rain);
+//  }
+//
+//  &--teal {
+//    @include checkboxTheme(transparent, $white, $light-grey, $teal);
+//  }
+//
+//  &--soft-teal {
+//    @include checkboxTheme(transparent, $white, $soft-grey, $teal);
+//  }
+//
+//  &--q4-blue-teal {
+//    @include checkboxTheme(transparent, $white, $q4-blue, $teal);
+//  }
+//
+//  &--q4-blue-white {
+//    @include checkboxTheme(transparent, $light-slate, $q4-blue, $white);
+//  }
+//
+//  &--white-rain {
+//    @include checkboxTheme(transparent, $white, $white, $rain);
+//  }
+//
+//  &--white-steel {
+//    @include checkboxTheme(transparent, $white, $white, $steel);
+//  }
+//
+//  &--steel-teal {
+//    @include checkboxTheme(transparent, $white, $steel, $teal);
+//  }
+//
+//  &--spice {
+//    @include checkboxTheme(transparent, $white, $light-grey, $spice);
+//  }
+//
+//  &--rain {
+//    @include checkboxTheme(transparent, $white, $light-grey, $rain);
+//  }
+//
+//  &--steel {
+//    @include checkboxTheme(transparent, $white, $steel, $slate);
+//  }
+//
+//  &--q4-blue {
+//    @include checkboxTheme(transparent, $white, $q4-blue, $slate);
+//  }
+//
+//  &--ink {
+//    @include checkboxTheme(transparent, $white, $ink, $slate);
+//  }
+//
+//  &--box-only & {
+//    &_label:before, &_label:after {
+//      margin: 0;
+//    }
+//  }
+//
+//  &--custom-color {
+//    &.checkbox--checked .checkbox_label {
+//      &:before, &:after {
+//        color: inherit;
+//        background-color: currentColor;
+//      }
+//    }
+//  }
+//
+//  &--small, &--xsmall {
+//    .checkbox {
+//      &_label {
+//        &:before, &:after {
+//          padding-top: 0;
+//          font-size: 8px;
+//          vertical-align: top;
+//        }
+//
+//        &--right {
+//          &:before {
+//            margin-right: 5px;
+//          }
+//        }
+//
+//        &--left {
+//          &:after {
+//            margin-left: 5px;
+//          }
+//        }
+//      }
+//    }
+//  }
+//
+//  &--small {
+//    .checkbox {
+//      &_label {
+//        line-height: 13px;
+//
+//        &:before, &:after {
+//          width: 13px;
+//          height: 13px;
+//          line-height: 13px;
+//        }
+//      }
+//    }
+//  }
+//
+//  &--xsmall {
+//    .checkbox {
+//      &_label {
+//        line-height: 11px;
+//
+//        &:before, &:after {
+//          width: 11px;
+//          height: 11px;
+//          border-radius: $border-radius-xsmall;
+//          line-height: 11px;
+//        }
+//      }
+//    }
+//  }
+//
+//  &--disabled {
+//    opacity: 0.3;
+//    pointer-events: none;
+//  }
+//}
