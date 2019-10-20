@@ -18,9 +18,7 @@ function Layout ({children, className, theme, height, paddingMultiplier, horizon
 
   return (
     <section className={baseClassName} style={baseStyle}>
-      <div className='layout_inner'>
-        {children}
-      </div>
+      {children}
     </section>
   )
 }
@@ -49,12 +47,12 @@ Layout.propTypes = {
   /**
    * Horizontal alignment for children within the component
    */
-  horizontalAlign: PropTypes.oneOf(['left', 'right', 'center']),
+  horizontalAlign: PropTypes.oneOf(['left', 'center', 'right']),
 
   /**
    * Vertical alignment for children within the component
    */
-  verticalAlign: PropTypes.oneOf(['left', 'right', 'center'])
+  verticalAlign: PropTypes.oneOf(['top', 'center', 'bottom'])
 }
 
 Layout.defaultProps = {

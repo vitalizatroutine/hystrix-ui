@@ -1,6 +1,7 @@
 .field {
   position: relative;
   display: inline-block;
+  width: 100%;
   vertical-align: top;
   text-align: left; }
 

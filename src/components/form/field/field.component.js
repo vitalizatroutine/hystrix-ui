@@ -1,4 +1,4 @@
-import React, { useState, memo, PureComponent } from 'react'
+import React, { useState, memo } from 'react'
 import PropTypes from 'prop-types'
 import { isUndefined } from 'lodash'
 import { getClassName } from '../../../utils/'
@@ -63,12 +63,12 @@ function Field (props) {
 
     switch (type) {
       case 'textarea':
-        return <TextArea props={{...props}} value={finalValue} handleInputChange={handleInputChange} />
+        return <TextArea props={{...props}} value={finalValue} handleInputChange={handleInputChange}/>
       case 'number':
       case 'text':
       case 'password':
       default:
-        return <Input props={{...props}} value={finalValue} handleInputChange={handleInputChange} />
+        return <Input props={{...props}} value={finalValue} handleInputChange={handleInputChange}/>
     }
   }
 
@@ -104,4 +104,4 @@ Field.defaultProps = {
   maxLength: 32
 }
 
-export default Field
+export default memo(Field)

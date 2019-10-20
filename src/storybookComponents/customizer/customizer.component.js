@@ -1,7 +1,7 @@
 import React, { PureComponent, cloneElement } from 'react'
 import PropTypes from 'prop-types'
 import { isUndefined } from 'lodash'
-import { Field } from '../../components'
+import { Field, Grid, GridColumn } from '../../components'
 import { Layout } from '../../storybookComponents'
 import './customizer.component.css'
 
@@ -38,7 +38,6 @@ class Customizer extends PureComponent {
 
     return (
       <Field
-        key={`customizer-prop--${field}`}
         id={`customizer-prop--${field}`}
         name={`customizer-prop--${field}`}
         label={field}
@@ -59,7 +58,13 @@ class Customizer extends PureComponent {
           {cloneElement(component, customProps)}
         </Layout>
         <Layout theme='white' horizontalAlign='left' verticalAlign='top'>
-          {(config || []).map((prop) => this.renderPropField(prop))}
+          <Grid>
+            {(config || []).map((prop) => (
+              <GridColumn key={`customizer-prop--${prop.field}`} width='1-of-4' smallWidth='1-of-3'>
+                {this.renderPropField(prop)}
+              </GridColumn>
+            ))}
+          </Grid>
         </Layout>
       </section>
     )
