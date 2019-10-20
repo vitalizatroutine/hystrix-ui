@@ -38,8 +38,7 @@ function TextArea ({name, id, value, placeholder, readOnly, handleInputChange}) 
 }
 
 function Field (props) {
-  const [value, setValue] = useState(props.initialValue)
-  const {className, type, theme, size, label, forceValue, id, readOnly, onChange} = props
+  const {className, type, theme, size, label, value, id, readOnly, onChange} = props
 
   const baseClassName = getClassName('field', [
     {condition: className, trueClassName: className},
@@ -50,25 +49,23 @@ function Field (props) {
     {condition: value, falseClassName: 'field--empty'}
   ])
 
-  const finalValue = isUndefined(forceValue) ? value : forceValue
   const renderInput = () => {
     const handleInputChange = (event) => {
       event.persist()
       const target = event.target
-      const value = target.value
+      const newValue = target.value
 
-      setValue(value)
-      onChange && onChange(event, value)
+      onChange && onChange(newValue, event)
     }
 
     switch (type) {
       case 'textarea':
-        return <TextArea props={{...props}} value={finalValue} handleInputChange={handleInputChange}/>
+        return <TextArea props={{...props}} value={value} handleInputChange={handleInputChange}/>
       case 'number':
       case 'text':
       case 'password':
       default:
-        return <Input props={{...props}} value={finalValue} handleInputChange={handleInputChange}/>
+        return <Input props={{...props}} value={value} handleInputChange={handleInputChange}/>
     }
   }
 
@@ -86,8 +83,7 @@ Field.propTypes = {
   theme: PropTypes.string,
   size: PropTypes.oneOf(['small', 'default', 'large']),
   label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  initialValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  forceValue: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
+  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   id: PropTypes.string.isRequired,
   name: PropTypes.string.isRequired,
   minLength: PropTypes.number,

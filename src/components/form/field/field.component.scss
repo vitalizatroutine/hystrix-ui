@@ -14,13 +14,14 @@ $input-height--large: gux(5);
   &_label {
     display: block;
     margin-bottom: gux(0.5);
+    line-height: gux(2);
   }
 
   &_input {
     display: inline-block;
     width: 100%;
-    height: gux(4);
-    padding: 0 gux(2);
+    height: gux(5);
+    padding: 0 gux();
     border: none;
     background: $light-slate;
     font-family: $font-family--base;
@@ -53,7 +54,7 @@ $input-height--large: gux(5);
   &--small.field--number {
     .field {
       &_input {
-        height: gux(3)
+        height: gux(4)
       }
     }
   }
@@ -63,7 +64,7 @@ $input-height--large: gux(5);
   &--large.field--number {
     .field {
       &_input {
-        height: gux(5)
+        height: gux(6)
       }
     }
   }

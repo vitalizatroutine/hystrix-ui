@@ -1,11 +1,9 @@
 import React, { PureComponent, cloneElement } from 'react'
 import PropTypes from 'prop-types'
 import { isUndefined } from 'lodash'
-import { Field, Grid, GridColumn } from '../../components'
+import { Checkbox, Field, Grid, GridColumn } from '../../components'
 import { Layout } from '../../storybookComponents'
 import './customizer.component.css'
-
-// import { getClassName } from '../../utils/ui'
 
 class Customizer extends PureComponent {
   constructor (props) {
@@ -25,9 +23,10 @@ class Customizer extends PureComponent {
     }
   }
 
-  renderPropField = (prop) => {
-    const {field, type, initialValue} = prop
-    const handlePropChange = (event, value) => {
+  renderPropField = (prop, customProps) => {
+    const {field, type} = prop
+    const value = customProps[field]
+    const handlePropChange = (value) => {
       this.setState({
         customProps: {
           ...this.state.customProps,
@@ -36,16 +35,30 @@ class Customizer extends PureComponent {
       })
     }
 
-    return (
-      <Field
-        id={`customizer-prop--${field}`}
-        name={`customizer-prop--${field}`}
-        label={field}
-        type={type}
-        initialValue={initialValue}
-        onChange={handlePropChange}
-      />
-    )
+    switch (type) {
+      case 'boolean':
+        return (
+          <Checkbox
+            id={`customizer-prop--${field}`}
+            name={`customizer-prop--${field}`}
+            label={field}
+            checked={value}
+            onChange={handlePropChange}
+          />
+        )
+      case 'text':
+      case 'number':
+        return (
+          <Field
+            id={`customizer-prop--${field}`}
+            name={`customizer-prop--${field}`}
+            label={field}
+            type={type}
+            value={value}
+            onChange={handlePropChange}
+          />
+        )
+    }
   }
 
   render () {
@@ -61,7 +74,7 @@ class Customizer extends PureComponent {
           <Grid>
             {(config || []).map((prop) => (
               <GridColumn key={`customizer-prop--${prop.field}`} width='1-of-4' smallWidth='1-of-3'>
-                {this.renderPropField(prop)}
+                {this.renderPropField(prop, customProps)}
               </GridColumn>
             ))}
           </Grid>

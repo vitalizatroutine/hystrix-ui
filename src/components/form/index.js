@@ -1,7 +1,8 @@
-// export { default as Checkbox } from './checkbox'
+import Checkbox from './checkbox'
 // export { default as RadioButton } from './radioButton'
 import Field from './field'
 
 export {
+  Checkbox,
   Field
 }
