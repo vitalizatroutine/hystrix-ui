@@ -1,0 +1,40 @@
+.layout {
+  display: flex;
+  background-color: white; }
+
+.layout--auto {
+  height: auto; }
+
+.layout--comfy {
+  height: 100%;
+  max-height: 40vh; }
+
+.layout--fill {
+  height: 100%; }
+
+.layout--horizontally-left {
+  justify-content: flex-start; }
+
+.layout--horizontally-center {
+  justify-content: center; }
+
+.layout--horizontally-right {
+  justify-content: flex-end; }
+
+.layout--vertically-top {
+  align-items: flex-start; }
+
+.layout--vertically-center {
+  align-items: center; }
+
+.layout--vertically-bottom {
+  align-items: flex-end; }
+
+.layout--light {
+  background: #F8F8F8; }
+
+.layout--dark {
+  background: #131313; }
+
+.layout--black {
+  background: black; }

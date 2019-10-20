@@ -2,11 +2,11 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
 
-import { Frame } from '../../../storybookComponents/index'
+import { Layout } from '../../../storybookComponents/index'
 import Field from './field.component'
 
 storiesOf('Field', module).add('TextInput', () => (
-  <Frame horizontalAlign='center' verticalAlign='center'>
+  <Layout horizontalAlign='center' verticalAlign='center'>
     <Field
       label='field label'
       id='story-book-field'
@@ -14,7 +14,7 @@ storiesOf('Field', module).add('TextInput', () => (
       size='large'
       onChange={action('Input value was changed.')}
     />
-  </Frame>
+  </Layout>
 ))
 
 export default {

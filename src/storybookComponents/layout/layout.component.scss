@@ -1,10 +1,21 @@
 @import '../../styles/variables';
 
-.frame {
+.layout {
   display: flex;
-  height: 100%;
-  max-height: 40vh;
-  background-color: $off-white;
+  background-color: white;
+
+  &--auto {
+    height: auto;
+  }
+
+  &--comfy {
+    height: 100%;
+    max-height: 40vh;
+  }
+
+  &--fill {
+    height: 100%;
+  }
 
   &--horizontally {
     &-left {
@@ -21,7 +32,7 @@
   }
 
   &--vertically {
-    &-left {
+    &-top {
       align-items: flex-start;
     }
 
@@ -29,8 +40,20 @@
       align-items: center;
     }
 
-    &-right {
+    &-bottom {
       align-items: flex-end;
     }
+  }
+
+  &--light {
+    background: $off-white;
+  }
+
+  &--dark {
+    background: $dark-slate;
+  }
+
+  &--black {
+    background: black;
   }
 }
