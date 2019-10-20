@@ -6,7 +6,7 @@ import './checkbox.component.css'
 function Checkbox (props) {
   const {
     className, theme, size,
-    id, name, label, labelAlign, customCheckboxColor, boxOnly, checked, disabled,
+    id, name, label, labelAlign, customCheckboxColor, boxOnly, alignWithFields, checked, disabled,
     onChange
   } = props
 
@@ -16,6 +16,7 @@ function Checkbox (props) {
     {condition: size, trueClassName: `checkbox--${size}`},
     {condition: checked, trueClassName: 'checkbox--checked'},
     {condition: boxOnly, trueClassName: 'checkbox--box-only'},
+    {condition: alignWithFields, trueClassName: 'checkbox--aligned'},
     {condition: disabled, trueClassName: 'checkbox--disabled'}
   ])
 
@@ -121,6 +122,11 @@ Checkbox.propTypes = {
   },
 
   /**
+   * Used to determine whether or not to paint an additional space above the checkbox as to align it with text fields
+   */
+  alignWithFields: PropTypes.bool,
+
+  /**
    * Used to disable interaction with the checkbox component
    */
   disabled: PropTypes.bool,
@@ -134,7 +140,8 @@ Checkbox.propTypes = {
 Checkbox.defaultProps = {
   boxOnly: false,
   checked: false,
-  labelAlign: 'right'
+  labelAlign: 'right',
+  alignWithFields: true
 }
 
 export default memo(Checkbox)

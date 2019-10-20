@@ -17,8 +17,12 @@
     height: 100%;
   }
 
-  &--horizontally {
-    &-left {
+  &--column-direction {
+    flex-direction: column;
+  }
+
+  &--justify {
+    &-flex-start {
       justify-content: flex-start;
     }
 
@@ -26,13 +30,21 @@
       justify-content: center;
     }
 
-    &-right {
+    &-space-between {
+      justify-content: space-between;
+    }
+
+    &-space-around {
+      justify-content: space-around;
+    }
+
+    &-flex-end {
       justify-content: flex-end;
     }
   }
 
-  &--vertically {
-    &-top {
+  &--align {
+    &-flex-start {
       align-items: flex-start;
     }
 
@@ -40,7 +52,11 @@
       align-items: center;
     }
 
-    &-bottom {
+    &-stretched {
+      align-items: stretch;
+    }
+
+    &-flex-end {
       align-items: flex-end;
     }
   }

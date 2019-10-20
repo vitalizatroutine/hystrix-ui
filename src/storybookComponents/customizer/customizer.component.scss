@@ -1,3 +1,15 @@
+@import '../../styles/variables';
+
 .customizer {
   height: 100%;
+
+  &_section {
+    width: 100%;
+
+    &:not(:first-child) {
+      margin-top: gux(2);
+      padding-top: gux(2);
+      border-top: 1px solid $envy;
+    }
+  }
 }

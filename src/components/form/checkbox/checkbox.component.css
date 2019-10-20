@@ -9,7 +9,7 @@
 
 .checkbox_label {
   display: inline-block;
-  line-height: 60px;
+  line-height: 40px;
   user-select: none;
   white-space: nowrap; }
 
@@ -46,6 +46,9 @@
 
 .checkbox--box-only .checkbox_label:before, .checkbox--box-only .checkbox_label:after {
   margin: 0; }
+
+.checkbox--aligned {
+  margin-top: 20px; }
 
 .checkbox--custom-color.checkbox--checked .checkbox_label:before, .checkbox--custom-color.checkbox--checked .checkbox_label:after {
   color: inherit;

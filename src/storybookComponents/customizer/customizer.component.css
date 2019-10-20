@@ -1,2 +1,10 @@
 .customizer {
   height: 100%; }
+
+.customizer_section {
+  width: 100%; }
+
+.customizer_section:not(:first-child) {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid #e50c3a; }

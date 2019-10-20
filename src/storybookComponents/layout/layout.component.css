@@ -12,22 +12,34 @@
 .layout--fill {
   height: 100%; }
 
-.layout--horizontally-left {
+.layout--column-direction {
+  flex-direction: column; }
+
+.layout--justify-flex-start {
   justify-content: flex-start; }
 
-.layout--horizontally-center {
+.layout--justify-center {
   justify-content: center; }
 
-.layout--horizontally-right {
+.layout--justify-space-between {
+  justify-content: space-between; }
+
+.layout--justify-space-around {
+  justify-content: space-around; }
+
+.layout--justify-flex-end {
   justify-content: flex-end; }
 
-.layout--vertically-top {
+.layout--align-flex-start {
   align-items: flex-start; }
 
-.layout--vertically-center {
+.layout--align-center {
   align-items: center; }
 
-.layout--vertically-bottom {
+.layout--align-stretched {
+  align-items: stretch; }
+
+.layout--align-flex-end {
   align-items: flex-end; }
 
 .layout--light {

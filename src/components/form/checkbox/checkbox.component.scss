@@ -21,7 +21,7 @@
 
   &_label {
     display: inline-block;
-    line-height: gux(7.5);
+    line-height: gux(5);
     user-select: none;
     white-space: nowrap;
 
@@ -73,6 +73,10 @@
     &_label:before, &_label:after {
       margin: 0;
     }
+  }
+
+  &--aligned {
+    margin-top: gux(2.5);
   }
 
   &--custom-color {

@@ -1,6 +1,6 @@
 import React, { PureComponent, cloneElement } from 'react'
 import PropTypes from 'prop-types'
-import { isUndefined } from 'lodash'
+import { isUndefined, groupBy } from 'lodash'
 import { Checkbox, Field, Grid, GridColumn } from '../../components'
 import { Layout } from '../../storybookComponents'
 import './customizer.component.css'
@@ -23,6 +23,33 @@ class Customizer extends PureComponent {
     }
   }
 
+  getPropGroupDetails = (propType) => {
+    const propTypeLabelMap = {
+      'text': {
+        label: 'String / React Object props',
+        width: '1-of-4',
+        smallWidth: '1-of-3'
+      },
+      'number':  {
+        label: 'Number props',
+        width: '1-of-4',
+        smallWidth: '1-of-3'
+      },
+      'boolean': {
+        label: 'Boolean props',
+        width: '1-of-8',
+        smallWidth: '1-of-6'
+      },
+      'function': {
+        label: 'Function props',
+        width: '1-of-1',
+        smallWidth: '1-of-1'
+      }
+    }
+
+    return propTypeLabelMap[propType] || 'Other props'
+  }
+
   renderPropField = (prop, customProps) => {
     const {field, type} = prop
     const value = customProps[field]
@@ -43,6 +70,7 @@ class Customizer extends PureComponent {
             name={`customizer-prop--${field}`}
             label={field}
             checked={value}
+            alignWithFields={false}
             onChange={handlePropChange}
           />
         )
@@ -65,19 +93,29 @@ class Customizer extends PureComponent {
     const {config, component} = this.props
     const {customProps} = this.state
 
+    const propGroups = groupBy(config || [], 'type')
+
     return (
       <section className='customizer'>
-        <Layout theme='light' height='comfy' horizontalAlign='center' verticalAlign='center'>
+        <Layout theme='light' height='comfy' justifyContent='center' alignContent='center'>
           {cloneElement(component, customProps)}
         </Layout>
-        <Layout theme='white' horizontalAlign='left' verticalAlign='top'>
-          <Grid>
-            {(config || []).map((prop) => (
-              <GridColumn key={`customizer-prop--${prop.field}`} width='1-of-4' smallWidth='1-of-3'>
-                {this.renderPropField(prop, customProps)}
-              </GridColumn>
-            ))}
-          </Grid>
+        <Layout theme='white' direction='column' justifyContent='flex-start' alignContent='flext-start'>
+          {Object.keys(propGroups).map((propGroup) => {
+            const propGroupDetails = this.getPropGroupDetails(propGroup)
+            return (
+              <div key={`customizer_section--${propGroup}`} className='customizer_section'>
+                <h2>{propGroupDetails.label}</h2>
+                <Grid>
+                  {propGroups[propGroup].map((prop) => (
+                    <GridColumn key={`customizer-prop--${prop.field}`} width={propGroupDetails.width} smallWidth={propGroupDetails.smallWidth}>
+                      {this.renderPropField(prop, customProps)}
+                    </GridColumn>
+                  ))}
+                </Grid>
+              </div>
+            )
+          })}
         </Layout>
       </section>
     )
