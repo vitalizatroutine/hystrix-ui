@@ -84,7 +84,6 @@ class Customizer extends PureComponent {
       case 'boolean':
         return (
           <Checkbox
-            size='small'
             id={`customizer-prop--${field}`}
             name={`customizer-prop--${field}`}
             label={field}
