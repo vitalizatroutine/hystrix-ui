@@ -6,7 +6,7 @@ import './checkbox.component.css'
 function Checkbox (props) {
   const {
     className, theme, size,
-    id, name, label, labelAlign, customCheckboxColor, boxOnly, alignWithFields, checked, disabled,
+    id, name, label, labelAlign, customCheckboxColor, boxOnly, inline, alignWithFields, checked, disabled,
     onChange
   } = props
 
@@ -16,29 +16,30 @@ function Checkbox (props) {
     {condition: size, trueClassName: `checkbox--${size}`},
     {condition: checked, trueClassName: 'checkbox--checked'},
     {condition: boxOnly, trueClassName: 'checkbox--box-only'},
+    {condition: inline, trueClassName: 'checkbox--inline'},
     {condition: alignWithFields, trueClassName: 'checkbox--aligned'},
     {condition: disabled, trueClassName: 'checkbox--disabled'}
   ])
 
   const handleChange = (event) => {
-      onChange && onChange(event.target.checked, event);
-  };
+    onChange && onChange(event.target.checked, event)
+  }
 
   const renderCheckboxLabel = () => {
-    let labelStyle = {};
+    let labelStyle = {}
 
     if (checked && customCheckboxColor) {
       labelStyle = {
         color: customCheckboxColor
-      };
+      }
     }
 
     return (
       <label className={`checkbox_label checkbox_label--${labelAlign}`} style={labelStyle} htmlFor={id}>
         {!boxOnly && label}
       </label>
-    );
-  };
+    )
+  }
 
   const renderCheckboxInput = () => {
     return (
@@ -58,7 +59,7 @@ function Checkbox (props) {
     <div className={baseClassName}>
       {labelAlign === 'left' && (boxOnly || label) && renderCheckboxLabel()}
       {renderCheckboxInput()}
-      {labelAlign === 'right' && (boxOnly  || label) && renderCheckboxLabel()}
+      {labelAlign === 'right' && (boxOnly || label) && renderCheckboxLabel()}
     </div>
   )
 }
@@ -97,7 +98,7 @@ Checkbox.propTypes = {
   /**
    * Used to determine the size of the checkbox
    */
-  size: PropTypes.string,
+  size: PropTypes.oneOf(['small', 'default', 'large']),
 
   /**
    * The default label prop to determine label text or render
@@ -122,6 +123,11 @@ Checkbox.propTypes = {
   },
 
   /**
+   * Used to determine whether or not to align the checkbox inline
+   */
+  inline: PropTypes.bool,
+
+  /**
    * Used to determine whether or not to paint an additional space above the checkbox as to align it with text fields
    */
   alignWithFields: PropTypes.bool,
@@ -140,6 +146,7 @@ Checkbox.propTypes = {
 Checkbox.defaultProps = {
   boxOnly: false,
   checked: false,
+  size: 'default',
   labelAlign: 'right',
   alignWithFields: true
 }

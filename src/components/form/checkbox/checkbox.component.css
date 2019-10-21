@@ -54,26 +54,31 @@
   color: inherit;
   background-color: currentColor; }
 
-.checkbox--small .checkbox_label--right:before, .checkbox--xsmall .checkbox_label--right:before {
-  margin-right: 4px; }
-
-.checkbox--small .checkbox_label--left:after, .checkbox--xsmall .checkbox_label--left:after {
-  margin-left: 4px; }
-
 .checkbox--small .checkbox_label {
-  line-height: 52px; }
+  line-height: 32px; }
 
 .checkbox--small .checkbox_label:before, .checkbox--small .checkbox_label:after {
   width: 12px;
   height: 12px; }
 
-.checkbox--xsmall .checkbox_label {
-  line-height: 40px; }
+.checkbox--small .checkbox_label--right:before {
+  margin-right: 4px; }
 
-.checkbox--xsmall .checkbox_label:before, .checkbox--xsmall .checkbox_label:after {
-  width: 8px;
-  height: 8px;
-  border-radius: 2px; }
+.checkbox--small .checkbox_label--left:after {
+  margin-left: 4px; }
+
+.checkbox--large .checkbox_label {
+  line-height: 48px; }
+
+.checkbox--large .checkbox_label:before, .checkbox--large .checkbox_label:after {
+  width: 20px;
+  height: 20px; }
+
+.checkbox--large .checkbox_label--right:before {
+  margin-right: 12px; }
+
+.checkbox--large .checkbox_label--left:after {
+  margin-left: 12px; }
 
 .checkbox--disabled {
   opacity: 0.3;

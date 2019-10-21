@@ -1,7 +1,7 @@
 import React, { PureComponent, cloneElement } from 'react'
 import PropTypes from 'prop-types'
 import { isUndefined, groupBy } from 'lodash'
-import { Checkbox, Field, Grid, GridColumn } from '../../components'
+import { Checkbox, Field, Grid, GridColumn, RadioGroup } from '../../components'
 import { Layout } from '../../storybookComponents'
 import './customizer.component.css'
 
@@ -56,7 +56,7 @@ class Customizer extends PureComponent {
   }
 
   renderPropField = (prop, customProps) => {
-    const {field, type, placeholder} = prop
+    const {field, type, options, placeholder} = prop
     const value = customProps[field]
     const handlePropChange = (value) => {
       this.setState({
@@ -68,17 +68,6 @@ class Customizer extends PureComponent {
     }
 
     switch (type) {
-      case 'boolean':
-        return (
-          <Checkbox
-            id={`customizer-prop--${field}`}
-            name={`customizer-prop--${field}`}
-            label={field}
-            checked={value}
-            alignWithFields={false}
-            onChange={handlePropChange}
-          />
-        )
       case 'text':
       case 'number':
         return (
@@ -89,6 +78,35 @@ class Customizer extends PureComponent {
             type={type}
             value={value}
             placeholder={placeholder}
+            onChange={handlePropChange}
+          />
+        )
+      case 'boolean':
+        return (
+          <Checkbox
+            size='small'
+            id={`customizer-prop--${field}`}
+            name={`customizer-prop--${field}`}
+            label={field}
+            checked={value}
+            alignWithFields={false}
+            onChange={handlePropChange}
+          />
+        )
+      case 'choice':
+        return (
+          <RadioGroup
+            direction='vertical'
+            name={`customizer-prop--${field}`}
+            label={field}
+            options={(options || []).map((option) => {
+              return {
+                id: `customizer-prop--${option}-${field}`,
+                label: option,
+                value: option,
+                checked: value === option
+              }
+            })}
             onChange={handlePropChange}
           />
         )

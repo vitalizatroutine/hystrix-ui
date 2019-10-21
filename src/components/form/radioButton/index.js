@@ -1,3 +1,3 @@
-// import RadioButton from './radioButton.component'
+import RadioButton from './radioButton.component'
 
-// export default RadioButton
+export default RadioButton

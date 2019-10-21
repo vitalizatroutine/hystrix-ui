@@ -1,8 +1,11 @@
 import Checkbox from './checkbox'
-// export { default as RadioButton } from './radioButton'
 import Field from './field'
+import RadioButton from './radioButton'
+import RadioGroup from './radioGroup'
 
 export {
   Checkbox,
-  Field
+  Field,
+  RadioButton,
+  RadioGroup
 }

@@ -88,9 +88,16 @@
     }
   }
 
-  &--small, &--xsmall {
+  &--small {
     .checkbox {
       &_label {
+        line-height: gux(4);
+
+        &:before, &:after {
+          width: gux(1.5);
+          height: gux(1.5);
+        }
+
         &--right {
           &:before {
             margin-right: gux(0.5);
@@ -106,28 +113,26 @@
     }
   }
 
-  &--small {
+  &--large {
     .checkbox {
       &_label {
-        line-height: gux(6.5);
+        line-height: gux(6);
 
         &:before, &:after {
-          width: gux(1.5);
-          height: gux(1.5);
+          width: gux(2.5);
+          height: gux(2.5);
         }
-      }
-    }
-  }
 
-  &--xsmall {
-    .checkbox {
-      &_label {
-        line-height: gux(5);
+        &--right {
+          &:before {
+            margin-right: gux(1.5);
+          }
+        }
 
-        &:before, &:after {
-          width: gux();
-          height: gux();
-          border-radius: $border-radius--xsmall;
+        &--left {
+          &:after {
+            margin-left: gux(1.5);
+          }
         }
       }
     }

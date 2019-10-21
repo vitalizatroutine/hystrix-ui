@@ -56,7 +56,7 @@ const buttonConfig = [{
 }, {
   field: 'size',
   type: 'choice',
-  choices: ['small', 'default', 'large'],
+  options: ['small', 'default', 'large'],
   initialValue: 'default'
 }]
 
