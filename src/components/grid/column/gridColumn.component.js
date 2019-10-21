@@ -1,7 +1,6 @@
 import React, { memo } from 'react'
 import PropTypes from 'prop-types'
 import { getClassName } from '../../../utils/'
-import '../grid.component.css'
 
 const columnGroups = [2, 3, 4, 5, 6, 8, 12]
 const columnModifiers = columnGroups.reduce((accumulator, currentGroup) => {

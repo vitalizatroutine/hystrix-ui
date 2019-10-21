@@ -2,20 +2,20 @@
 
 // Namespaces
 // This stops me from being overzealous with enforcing classes
-$grid-namespace: "grid" !default;
-$grid-column-namespace: "grid_col" !default;
+$grid-namespace: "grid";
+$grid-column-namespace: "grid_col";
 
 // $col-groups are the column groups you want
 // For example, $col-groups: (3, 4, 5) will output:
 // .grid_col--n-of-3, .grid_col--n-of-4, [...]
-$col-groups: (2, 3, 4, 5, 6, 8, 12) !default;
+$col-groups: (2, 3, 4, 5, 6, 8, 12);
 
 // Gutter width
-$gutter-width: gux(3) !default;
+$gutter-width: gux(3);
 
 // Pushes and pulls
-$pushes: true !default;
-$pulls: true !default;
+$pushes: true;
+$pulls: true;
 
 .#{$grid-namespace} {
   width: 100%;
