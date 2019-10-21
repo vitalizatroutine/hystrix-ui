@@ -60,12 +60,12 @@ function Field (props) {
 
     switch (type) {
       case 'textarea':
-        return <TextArea props={{...props}} value={value} handleInputChange={handleInputChange}/>
+        return <TextArea {...props} handleInputChange={handleInputChange}/>
       case 'number':
       case 'text':
       case 'password':
       default:
-        return <Input props={{...props}} value={value} handleInputChange={handleInputChange}/>
+        return <Input {...props} handleInputChange={handleInputChange}/>
     }
   }
 

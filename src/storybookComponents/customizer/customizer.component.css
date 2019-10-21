@@ -1,6 +1,13 @@
 .customizer {
   height: 100%; }
 
+.customizer_preview {
+  height: 40%; }
+
+.customizer_form {
+  height: 60%;
+  overflow-y: auto; }
+
 .customizer_section {
   width: 100%; }
 

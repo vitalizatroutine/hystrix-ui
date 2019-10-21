@@ -3,6 +3,15 @@
 .customizer {
   height: 100%;
 
+  &_preview {
+    height: 40%;
+  }
+
+  &_form {
+    height: 60%;
+    overflow-y: auto;
+  }
+
   &_section {
     width: 100%;
 

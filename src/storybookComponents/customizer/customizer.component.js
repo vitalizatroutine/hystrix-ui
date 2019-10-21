@@ -40,6 +40,11 @@ class Customizer extends PureComponent {
         width: '1-of-8',
         smallWidth: '1-of-6'
       },
+      'choice': {
+        label: 'One of Choice props',
+        width: '1-of-4',
+        smallWidth: '1-of-3'
+      },
       'function': {
         label: 'Function props',
         width: '1-of-1',
@@ -51,7 +56,7 @@ class Customizer extends PureComponent {
   }
 
   renderPropField = (prop, customProps) => {
-    const {field, type} = prop
+    const {field, type, placeholder} = prop
     const value = customProps[field]
     const handlePropChange = (value) => {
       this.setState({
@@ -83,6 +88,7 @@ class Customizer extends PureComponent {
             label={field}
             type={type}
             value={value}
+            placeholder={placeholder}
             onChange={handlePropChange}
           />
         )
@@ -97,10 +103,10 @@ class Customizer extends PureComponent {
 
     return (
       <section className='customizer'>
-        <Layout theme='light' height='comfy' justifyContent='center' alignContent='center'>
+        <Layout className='customizer_preview' theme='light' justifyContent='center' alignContent='center'>
           {cloneElement(component, customProps)}
         </Layout>
-        <Layout theme='white' direction='column' justifyContent='flex-start' alignContent='flext-start'>
+        <Layout className='customizer_form' theme='white' direction='column' justifyContent='flex-start' alignContent='flext-start'>
           {Object.keys(propGroups).map((propGroup) => {
             const propGroupDetails = this.getPropGroupDetails(propGroup)
             return (

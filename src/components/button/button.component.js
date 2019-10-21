@@ -1,5 +1,4 @@
 import React, { memo } from 'react'
-import { Link } from 'react-router-dom'
 import PropTypes from 'prop-types'
 import { getClassName } from '../../utils'
 import './button.component.css'
@@ -24,6 +23,7 @@ function Button (props) {
     {condition: className, trueClassName: className},
     {condition: theme, trueClassName: `button--${theme}`},
     {condition: size, trueClassName: `button--${size}`},
+    {condition: linkTo, trueClassName: 'button--link'},
     {condition: wide, trueClassName: 'button--wide'},
     {condition: circle, trueClassName: 'button--circle'},
     {condition: square || (!label && icon), trueClassName: 'button--square'},
@@ -34,11 +34,11 @@ function Button (props) {
   ])
 
   return linkTo ? (
-    <Link className={baseClassName} to={linkTo} target={linkTarget} style={styles && styles.base}
+    <a className={baseClassName} to={linkTo} target={linkTarget} style={styles && styles.base}
           onClick={handleClick} ref={reference}>
       {icon && <span className='button_icon' style={styles && styles.icon}>{icon}</span>}
       {label && <span className='button_label' style={styles && styles.label}>{label}</span>}
-    </Link>
+    </a>
   ) : (
     <button className={baseClassName} style={styles && styles.base} onClick={handleClick} ref={reference}>
       {icon && <span className='button_icon' style={styles && styles.icon}>{icon}</span>}

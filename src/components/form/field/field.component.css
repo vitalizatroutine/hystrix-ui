@@ -23,7 +23,8 @@
   line-height: 32px; }
 
 .field_input::placeholder {
-  font-family: "Roboto", sans-serif; }
+  font-family: "Roboto", sans-serif;
+  color: rgba(38, 38, 38, 0.7); }
 
 .field_input:focus {
   outline: none;

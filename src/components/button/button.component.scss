@@ -14,9 +14,9 @@
       background: $background--base;
     }
 
-    &:before {
-      border-color: rgba($text-color--base, .3);
-    }
+    background: linear-gradient(0.25turn, #{$background--base}, #{mix($background--base, white, 75%)} 50%, #{$background--base} 100%) repeat;
+    background-size: 50% 100%;
+    animation: moving-gradient 0.5s infinite linear;
   }
 
   &:disabled,
@@ -34,6 +34,7 @@
   border-radius: $border-radius--small;
   padding: 0 gux(1.5);
   font-family: inherit;
+  font-size: $font-size--base;
   text-align: center;
   text-transform: uppercase;
   transition: $transition-duration--default $transition-timing-function--default;
@@ -57,6 +58,10 @@
     margin-left: gux();
   }
 
+  &--link {
+    line-height: gux(4);
+  }
+
   &--square, &--circle {
     padding: 0;
     width: 30px;
@@ -70,6 +75,10 @@
     height: gux(3);
   }
 
+  &--small.button--link {
+    line-height: gux(3);
+  }
+
   &--small.button--square,
   &--small.button--circle {
     width: gux(3);
@@ -77,6 +86,10 @@
 
   &--large {
     height: gux(5);
+  }
+
+  &--large.button--link {
+    line-height: gux(5);
   }
 
   &--large.button--square,
@@ -110,4 +123,9 @@
   &--disabled {
     pointer-events: none;
   }
+}
+
+@keyframes moving-gradient {
+  0% { background-position: left bottom; }
+  100% { background-position: right bottom; }
 }
