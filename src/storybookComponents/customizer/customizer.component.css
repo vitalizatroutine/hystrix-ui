@@ -1,17 +1,13 @@
 .customizer {
   height: 100%; }
-
-.customizer_preview {
-  height: 40%; }
-
-.customizer_form {
-  height: 60%;
-  overflow-y: auto; }
-
-.customizer_section {
-  width: 100%; }
-
-.customizer_section:not(:first-child) {
-  margin-top: 16px;
-  padding-top: 16px;
-  border-top: 1px solid #e50c3a; }
+  .customizer_preview {
+    height: 40%; }
+  .customizer_form {
+    height: 60%;
+    overflow-y: auto; }
+  .customizer_section {
+    width: 100%; }
+    .customizer_section:not(:first-child) {
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid #e50c3a; }

@@ -20,22 +20,21 @@ function Button (props) {
   }
 
   const baseClassName = getClassName('button', [
-    {condition: className, trueClassName: className},
-    {condition: theme, trueClassName: `button--${theme}`},
-    {condition: size, trueClassName: `button--${size}`},
-    {condition: linkTo, trueClassName: 'button--link'},
-    {condition: wide, trueClassName: 'button--wide'},
-    {condition: circle, trueClassName: 'button--circle'},
-    {condition: square || (!label && icon), trueClassName: 'button--square'},
-    {condition: loading, trueClassName: 'button--loading'},
-    {condition: invisible, trueClassName: 'button--invisible'},
-    {condition: hidden, trueClassName: 'button--hidden'},
-    {condition: disabled, trueClassName: 'button--disabled'}
+    { condition: className, trueClassName: className },
+    { condition: theme, trueClassName: `button--${theme}` },
+    { condition: size, trueClassName: `button--${size}` },
+    { condition: linkTo, trueClassName: 'button--link' },
+    { condition: wide, trueClassName: 'button--wide' },
+    { condition: circle, trueClassName: 'button--circle' },
+    { condition: square || (!label && icon), trueClassName: 'button--square' },
+    { condition: loading, trueClassName: 'button--loading' },
+    { condition: invisible, trueClassName: 'button--invisible' },
+    { condition: hidden, trueClassName: 'button--hidden' },
+    { condition: disabled, trueClassName: 'button--disabled' }
   ])
 
   return linkTo ? (
-    <a className={baseClassName} to={linkTo} target={linkTarget} style={styles && styles.base}
-          onClick={handleClick} ref={reference}>
+    <a className={baseClassName} to={linkTo} target={linkTarget} style={styles && styles.base} onClick={handleClick} ref={reference}>
       {icon && <span className='button_icon' style={styles && styles.icon}>{icon}</span>}
       {label && <span className='button_label' style={styles && styles.label}>{label}</span>}
     </a>
@@ -119,7 +118,7 @@ Button.propTypes = {
   /**
    * A callback for when the user clicks the Button component
    */
-  onClick: PropTypes.func,
+  onClick: PropTypes.func
 }
 
 Button.defaultProps = {

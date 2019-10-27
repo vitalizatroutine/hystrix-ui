@@ -4,11 +4,11 @@ import { getClassName } from '../../utils/'
 import './grid.component.css'
 
 function Grid (props) {
-  const {className, children, gutter} = props
+  const { className, children, gutter } = props
 
   const baseClassName = getClassName('grid', [
-    {condition: className, trueClassName: className},
-    {condition: gutter, falseClassName: 'grid--no-gutter'}
+    { condition: className, trueClassName: className },
+    { condition: gutter, falseClassName: 'grid--no-gutter' }
   ])
 
   return (
@@ -32,7 +32,7 @@ Grid.propTypes = {
   /**
    * Used to deteremine whether or not the grid will render a gutter between each column
    */
-  gutter: PropTypes.bool,
+  gutter: PropTypes.bool
 }
 
 Grid.defaultProps = {

@@ -30,7 +30,7 @@ class Customizer extends PureComponent {
         width: '1-of-4',
         smallWidth: '1-of-3'
       },
-      'number':  {
+      'number': {
         label: 'Number props',
         width: '1-of-4',
         smallWidth: '1-of-3'
@@ -56,7 +56,7 @@ class Customizer extends PureComponent {
   }
 
   renderPropField = (prop, customProps) => {
-    const {field, type, options, placeholder} = prop
+    const { field, type, description, options, placeholder } = prop
     const value = customProps[field]
     const handlePropChange = (value) => {
       this.setState({
@@ -109,12 +109,19 @@ class Customizer extends PureComponent {
             onChange={handlePropChange}
           />
         )
+      case 'function':
+        return (
+          <>
+            <h3>{field}</h3>
+            <p>{description}</p>
+          </>
+        )
     }
   }
 
   render () {
-    const {config, component} = this.props
-    const {customProps} = this.state
+    const { config, component } = this.props
+    const { customProps } = this.state
 
     const propGroups = groupBy(config || [], 'type')
 
@@ -123,15 +130,21 @@ class Customizer extends PureComponent {
         <Layout className='customizer_preview' theme='light' justifyContent='center' alignContent='center'>
           {cloneElement(component, customProps)}
         </Layout>
-        <Layout className='customizer_form' theme='white' direction='column' justifyContent='flex-start' alignContent='flext-start'>
+        <Layout className='customizer_form' theme='white' direction='column' justifyContent='flex-start'
+                alignContent='flext-start'>
           {Object.keys(propGroups).map((propGroup) => {
             const propGroupDetails = this.getPropGroupDetails(propGroup)
             return (
               <div key={`customizer_section--${propGroup}`} className='customizer_section'>
                 <h2>{propGroupDetails.label}</h2>
+                {propGroup === 'function' && (
+                  <p>The following prop use can be tracked within the <strong>Actions</strong> tab of this storybook.
+                  </p>
+                )}
                 <Grid>
                   {propGroups[propGroup].map((prop) => (
-                    <GridColumn key={`customizer-prop--${prop.field}`} width={propGroupDetails.width} smallWidth={propGroupDetails.smallWidth}>
+                    <GridColumn key={`customizer-prop--${prop.field}`} width={propGroupDetails.width}
+                                smallWidth={propGroupDetails.smallWidth}>
                       {this.renderPropField(prop, customProps)}
                     </GridColumn>
                   ))}

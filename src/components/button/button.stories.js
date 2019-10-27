@@ -5,7 +5,7 @@ import { action } from '@storybook/addon-actions'
 import { Customizer } from '../../storybookComponents'
 import Button from './button.component'
 
-const buttonConfig = [{
+const propConfig = [{
   field: 'className',
   type: 'text',
   initialValue: '',
@@ -15,7 +15,7 @@ const buttonConfig = [{
   type: 'text',
   initialValue: 'Goodnight World',
   placeholder: 'Goodnight World'
-},{
+}, {
   field: 'linkTo',
   type: 'text',
   initialValue: '',
@@ -58,10 +58,15 @@ const buttonConfig = [{
   type: 'choice',
   options: ['small', 'default', 'large'],
   initialValue: 'default'
+}, {
+  field: 'onClick',
+  description: 'Triggered when the user clicks the Button. The button is automatically blurred after click.',
+  type: 'function',
+  initialValue: action('Button onClick has been triggered')
 }]
 
 storiesOf('Button', module).add('Default', () => (
-  <Customizer config={buttonConfig} component={<Button/>}/>
+  <Customizer config={propConfig} component={<Button />} />
 ))
 
 export default {

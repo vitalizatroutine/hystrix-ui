@@ -1,6 +1,5 @@
 .radio-group {
   width: 100%; }
-
-.radio-group_label {
-  line-height: 16px;
-  margin-bottom: 4px; }
+  .radio-group_label {
+    line-height: 16px;
+    margin-bottom: 4px; }
