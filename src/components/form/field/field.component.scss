@@ -39,10 +39,6 @@ $input-height--large: gux(5);
       border-bottom: 1px solid $envy;
     }
 
-    &:read-only {
-      color: rgba($slate, 0.3);
-    }
-
     &[type='number']::-webkit-inner-spin-button {
       -webkit-appearance: none;
     }
@@ -67,6 +63,13 @@ $input-height--large: gux(5);
       &_input {
         height: gux(6)
       }
+    }
+  }
+
+  &--disabled {
+    .field_input {
+      pointer-events: none;
+      color: rgba($slate, 0.3);
     }
   }
 

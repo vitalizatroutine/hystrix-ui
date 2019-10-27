@@ -47,7 +47,7 @@ class Customizer extends PureComponent {
       },
       'function': {
         label: 'Function props',
-        width: '1-of-1',
+        width: '1-of-2',
         smallWidth: '1-of-1'
       }
     }

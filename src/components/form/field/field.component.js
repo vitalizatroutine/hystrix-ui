@@ -1,6 +1,5 @@
 import React, { useState, memo } from 'react'
 import PropTypes from 'prop-types'
-import { isUndefined } from 'lodash'
 import { getClassName } from '../../../utils/'
 import './field.component.css'
 
@@ -16,7 +15,7 @@ function Input (props) {
       value={value}
       minLength={minLength}
       maxLength={maxLength}
-      readOnly={readOnly}
+      readOnly={readOnly ? 'readonly' : null}
       placeholder={placeholder}
       onChange={handleInputChange}
     />
@@ -30,7 +29,7 @@ function TextArea ({name, id, value, placeholder, readOnly, handleInputChange}) 
       name={name}
       id={id}
       value={value}
-      readOnly={readOnly}
+      readOnly={readOnly ? 'readonly' : null}
       placeholder={placeholder}
       onChange={handleInputChange}
     />
@@ -51,6 +50,10 @@ function Field (props) {
 
   const renderInput = () => {
     const handleInputChange = (event) => {
+      if (readOnly) {
+        return
+      }
+
       event.persist()
       const target = event.target
       const newValue = target.value

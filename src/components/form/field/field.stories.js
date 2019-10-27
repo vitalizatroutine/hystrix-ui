@@ -4,22 +4,6 @@ import { action } from '@storybook/addon-actions'
 
 import { Customizer } from '../../../storybookComponents/index'
 import Field from './field.component'
-import PropTypes from 'prop-types'
-
-const props = {
-  type: PropTypes.string,
-  theme: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'default', 'large']),
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  minLength: PropTypes.number,
-  maxLength: PropTypes.number,
-  placeholder: PropTypes.string,
-  readyOnly: PropTypes.bool,
-  onChange: PropTypes.func
-}
 
 const propConfig = [{
   field: 'className',
@@ -27,58 +11,59 @@ const propConfig = [{
   initialValue: '',
   placeholder: 'button--custom'
 }, {
+  field: 'id',
+  type: 'text',
+  initialValue: 'unique-field',
+  placeholder: 'unique-field'
+}, {
+  field: 'name',
+  type: 'text',
+  initialValue: 'unique-field',
+  placeholder: 'unique-field'
+}, {
   field: 'label',
+  type: 'text',
+  initialValue: 'Message to the world',
+  placeholder: 'Message to the world'
+}, {
+  field: 'value',
   type: 'text',
   initialValue: 'Goodnight World',
   placeholder: 'Goodnight World'
 }, {
-  field: 'linkTo',
+  field: 'placeholder',
   type: 'text',
-  initialValue: '',
-  placeholder: 'https://google.ca'
+  initialValue: 'Placeholder Value',
+  placeholder: 'Placeholder Value'
 }, {
-  field: 'icon',
-  type: 'text',
-  initialValue: '😴',
-  placeholder: '😴'
+  field: 'minLength',
+  type: 'number',
+  initialValue: 0,
+  placeholder: 'null or number'
 }, {
-  field: 'square',
+  field: 'maxLength',
+  type: 'number',
+  initialValue: 64,
+  placeholder: 'null or number'
+}, {
+  field: 'readOnly',
   type: 'boolean',
   initialValue: false
 }, {
-  field: 'circle',
-  type: 'boolean',
-  initialValue: false
-}, {
-  field: 'wide',
-  type: 'boolean',
-  initialValue: false
-}, {
-  field: 'loading',
-  type: 'boolean',
-  initialValue: false
-}, {
-  field: 'disabled',
-  type: 'boolean',
-  initialValue: false
-}, {
-  field: 'invisible',
-  type: 'boolean',
-  initialValue: false
-}, {
-  field: 'hidden',
-  type: 'boolean',
-  initialValue: false
+  field: 'type',
+  type: 'choice',
+  options: ['text', 'number', 'textarea'],
+  initialValue: 'text'
 }, {
   field: 'size',
   type: 'choice',
   options: ['small', 'default', 'large'],
   initialValue: 'default'
 }, {
-  field: 'onClick',
-  description: 'Triggered when the user clicks the Field. The button is automatically blurred after click.',
+  field: 'onChange',
+  description: 'Triggered when the user changes the value of the Field.',
   type: 'function',
-  initialValue: action('Field onClick has been triggered')
+  initialValue: action('Field onChange has been triggered')
 }]
 
 storiesOf('Field', module).add('Default', () => (

@@ -9,7 +9,7 @@ const columnModifiers = columnGroups.reduce((accumulator, currentGroup) => {
   }
 
   return accumulator
-}, [])
+}, ['1-of-1'])
 
 function GridColumn (props) {
   const {className, children, width, smallWidth, mobileWidth, first, last, centered, verticalAlign} = props
