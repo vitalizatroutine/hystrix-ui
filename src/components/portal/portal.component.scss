@@ -1,0 +1,59 @@
+@import '../../styles/variables';
+
+.portal {
+  transition-duration: $transition-duration--default;
+  transition-timing-function: $transition-timing-function--default;
+  z-index: $z-index--modal-level-one;
+
+  &, &_mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  &_mask {
+    background-color: rgba(0, 0, 0, 0.15);
+    z-index: $z-index--mask;
+  }
+
+  &_content {
+    position: relative;
+    z-index: $z-index--modal-level-one;
+  }
+
+  &--enter {
+    opacity: 0;
+  }
+
+  &--enter-active,
+  &--exit {
+    opacity: 1;
+  }
+
+  &--enter-active, &--exit-active {
+    transition-property: opacity;
+  }
+
+  &--exit-active {
+    opacity: 0;
+  }
+
+  &--fast-speed {
+    transition-duration: $transition-duration--fast;
+  }
+
+  &--slow-speed {
+    transition-duration: $transition-duration--slow;
+  }
+}
+
+.work-in-progress {
+  padding: gux(5);
+  background-color: $envy;
+  color: white;
+  text-align: center;
+  top: 50%;
+  left: 50%;
+}
