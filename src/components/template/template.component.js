@@ -4,10 +4,10 @@ import { getClassName } from '../../utils/'
 import './template.component.css'
 
 function Template (props) {
-  const {className, children} = props
+  const { className, children } = props
 
-  const baseClassName = getClassName('grid', [
-    {condition: className, trueClassName: className}
+  const baseClassName = getClassName('template', [
+    { condition: className, trueClassName: className }
   ])
 
   return (

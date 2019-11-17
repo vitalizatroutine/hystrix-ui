@@ -14,9 +14,9 @@ function Portal (props) {
   ])
 
   const timeout = {
-    'slow': 600,
-    'default': 300,
-    'fast': 150
+    slow: 600,
+    default: 300,
+    fast: 150
   }[transitionSpeed] || 150
 
   return ReactDOM.createPortal((
@@ -55,7 +55,7 @@ Portal.propTypes = {
   /**
    * Used to determine the speed of the Portal during transition phases
    */
-  transitionSpeed: PropTypes.oneOf('fast', 'default', 'slow'),
+  transitionSpeed: PropTypes.oneOf(['fast', 'default', 'slow']),
 
   /**
    * A callback for when the portal requests to be closed from the inside

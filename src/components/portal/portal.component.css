@@ -2,39 +2,30 @@
   transition-duration: 0.3s;
   transition-timing-function: ease;
   z-index: 55; }
-
-.portal, .portal_mask {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0; }
-
-.portal_mask {
-  background-color: rgba(0, 0, 0, 0.15);
-  z-index: 50; }
-
-.portal_content {
-  position: relative;
-  z-index: 55; }
-
-.portal--enter {
-  opacity: 0; }
-
-.portal--enter-active, .portal--exit {
-  opacity: 1; }
-
-.portal--enter-active, .portal--exit-active {
-  transition-property: opacity; }
-
-.portal--exit-active {
-  opacity: 0; }
-
-.portal--fast-speed {
-  transition-duration: 0.15s; }
-
-.portal--slow-speed {
-  transition-duration: 0.6s; }
+  .portal, .portal_mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0; }
+  .portal_mask {
+    background-color: rgba(0, 0, 0, 0.15);
+    z-index: 50; }
+  .portal_content {
+    position: relative;
+    z-index: 55; }
+  .portal--enter {
+    opacity: 0; }
+  .portal--enter-active, .portal--exit {
+    opacity: 1; }
+  .portal--enter-active, .portal--exit-active {
+    transition-property: opacity; }
+  .portal--exit-active {
+    opacity: 0; }
+  .portal--fast-speed {
+    transition-duration: 0.15s; }
+  .portal--slow-speed {
+    transition-duration: 0.6s; }
 
 .work-in-progress {
   padding: 40px;

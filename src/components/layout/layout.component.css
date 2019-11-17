@@ -1,0 +1,70 @@
+.layout--flex {
+  display: flex;
+  width: 100%; }
+
+.layout--auto {
+  height: auto; }
+
+.layout--comfy {
+  height: 100%;
+  max-height: 40vh; }
+
+.layout--fill {
+  height: 100%; }
+
+.layout--padding-times-one {
+  padding: 8px; }
+
+.layout--padding-times-two {
+  padding: 16px; }
+
+.layout--padding-times-three {
+  padding: 24px; }
+
+.layout--padding-times-four {
+  padding: 32px; }
+
+.layout--padding-times-five {
+  padding: 40px; }
+
+.layout--column-direction {
+  flex-direction: column; }
+
+.layout--justify-flex-start {
+  justify-content: flex-start; }
+
+.layout--justify-center {
+  justify-content: center; }
+
+.layout--justify-space-between {
+  justify-content: space-between; }
+
+.layout--justify-space-around {
+  justify-content: space-around; }
+
+.layout--justify-flex-end {
+  justify-content: flex-end; }
+
+.layout--align-flex-start {
+  align-items: flex-start; }
+
+.layout--align-center {
+  align-items: center; }
+
+.layout--align-stretched {
+  align-items: stretch; }
+
+.layout--align-flex-end {
+  align-items: flex-end; }
+
+.layout--white {
+  background-color: white; }
+
+.layout--light {
+  background: #F8F8F8; }
+
+.layout--dark {
+  background: #131313; }
+
+.layout--black {
+  background: black; }
