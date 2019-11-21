@@ -7,20 +7,21 @@ function RadioButton (props) {
   const {
     className, theme, size,
     id, name, value, label, labelAlign, customRadioButtonColor, radioOnly, inline, alignWithFields,
-    checked, disabled, onChange
+    checked, disabled, stopPropagation, onChange
   } = props
 
   const baseClassName = getClassName(className ? `${className} radio-button` : 'radio-button', [
-    {condition: theme, trueClassName: `radio-button--${theme}`},
-    {condition: customRadioButtonColor, trueClassName: 'radio-button--custom-color'},
-    {condition: size, trueClassName: `radio-button--${size}`},
-    {condition: checked, trueClassName: 'radio-button--checked'},
-    {condition: radioOnly, trueClassName: 'radio-button--radio-only'},
-    {condition: inline, trueClassName: 'radio-button--inline'},
-    {condition: alignWithFields, trueClassName: 'radio-button--aligned'},
-    {condition: disabled, trueClassName: 'radio-button--disabled'}
+    { condition: theme, trueClassName: `radio-button--${theme}` },
+    { condition: customRadioButtonColor, trueClassName: 'radio-button--custom-color' },
+    { condition: size, trueClassName: `radio-button--${size}` },
+    { condition: checked, trueClassName: 'radio-button--checked' },
+    { condition: radioOnly, trueClassName: 'radio-button--radio-only' },
+    { condition: inline, trueClassName: 'radio-button--inline' },
+    { condition: alignWithFields, trueClassName: 'radio-button--aligned' },
+    { condition: disabled, trueClassName: 'radio-button--disabled' }
   ])
 
+  const handleStoppedClick = (event) => event.stopPropagation()
   const handleChange = (event) => {
     onChange && onChange(event.target.value, event)
   }
@@ -35,8 +36,12 @@ function RadioButton (props) {
     }
 
     return (
-      <label className={`radio-button_label radio-button_label--${labelAlign}`} style={labelStyle} htmlFor={id}>
-        {!radioOnly && label}
+      <label
+        className={`radio-button_label radio-button_label--${labelAlign}`}
+        style={labelStyle}
+        htmlFor={id}
+        onClick={stopPropagation && handleStoppedClick}
+      >{!radioOnly && label}
       </label>
     )
   }
@@ -57,7 +62,7 @@ function RadioButton (props) {
   }
 
   return (
-    <div className={baseClassName}>
+    <div className={baseClassName} onClick={stopPropagation && handleStoppedClick}>
       {labelAlign === 'left' && (radioOnly || label) && renderRadioButtonLabel()}
       {renderRadioButtonInput()}
       {labelAlign === 'right' && (radioOnly || label) && renderRadioButtonLabel()}
@@ -137,6 +142,11 @@ RadioButton.propTypes = {
    * Used to disable interaction with the radio button component
    */
   disabled: PropTypes.bool,
+
+  /**
+   * Used to determine whether or not to run stopPropagation() on checkbox click events
+   */
+  stopPropagation: PropTypes.bool,
 
   /**
    * A callback function for when the user toggles the radio button

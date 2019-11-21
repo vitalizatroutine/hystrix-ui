@@ -7,20 +7,21 @@ function Checkbox (props) {
   const {
     className, theme, size,
     id, name, label, labelAlign, customCheckboxColor, boxOnly, inline, alignWithFields, checked, disabled,
-    onChange
+    stopPropagation, onChange
   } = props
 
   const baseClassName = getClassName(className ? `${className} checkbox` : 'checkbox', [
-    {condition: theme, trueClassName: `checkbox--${theme}`},
-    {condition: customCheckboxColor, trueClassName: 'checkbox--custom-color'},
-    {condition: size, trueClassName: `checkbox--${size}`},
-    {condition: checked, trueClassName: 'checkbox--checked'},
-    {condition: boxOnly, trueClassName: 'checkbox--box-only'},
-    {condition: inline, trueClassName: 'checkbox--inline'},
-    {condition: alignWithFields, trueClassName: 'checkbox--aligned'},
-    {condition: disabled, trueClassName: 'checkbox--disabled'}
+    { condition: theme, trueClassName: `checkbox--${theme}` },
+    { condition: customCheckboxColor, trueClassName: 'checkbox--custom-color' },
+    { condition: size, trueClassName: `checkbox--${size}` },
+    { condition: checked, trueClassName: 'checkbox--checked' },
+    { condition: boxOnly, trueClassName: 'checkbox--box-only' },
+    { condition: inline, trueClassName: 'checkbox--inline' },
+    { condition: alignWithFields, trueClassName: 'checkbox--aligned' },
+    { condition: disabled, trueClassName: 'checkbox--disabled' }
   ])
 
+  const handleStoppedClick = (event) => event.stopPropagation()
   const handleChange = (event) => {
     onChange && onChange(event.target.checked, event)
   }
@@ -35,8 +36,12 @@ function Checkbox (props) {
     }
 
     return (
-      <label className={`checkbox_label checkbox_label--${labelAlign}`} style={labelStyle} htmlFor={id}>
-        {!boxOnly && label}
+      <label
+        className={`checkbox_label checkbox_label--${labelAlign}`}
+        style={labelStyle}
+        htmlFor={id}
+        onClick={stopPropagation && handleStoppedClick}
+      >{!boxOnly && label}
       </label>
     )
   }
@@ -56,7 +61,7 @@ function Checkbox (props) {
   }
 
   return (
-    <div className={baseClassName}>
+    <div className={baseClassName} onClick={stopPropagation && handleStoppedClick}>
       {labelAlign === 'left' && (boxOnly || label) && renderCheckboxLabel()}
       {renderCheckboxInput()}
       {labelAlign === 'right' && (boxOnly || label) && renderCheckboxLabel()}
@@ -136,6 +141,11 @@ Checkbox.propTypes = {
    * Used to disable interaction with the checkbox component
    */
   disabled: PropTypes.bool,
+
+  /**
+   * Used to determine whether or not to run stopPropagation() on checkbox click events
+   */
+  stopPropagation: PropTypes.bool,
 
   /**
    * A callback function for when the user checks or unchecks the checkbox

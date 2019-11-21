@@ -6,17 +6,16 @@
 // import Template from './template.component'
 //
 // storiesOf('Template', module).add('Default', () => {
-//     const propConfig = {
-//       className: text('className', 'template--custom')
-//     }
-//
-//     return (
-//       <Layout flex alignItems='center' justifyContent='center' height='comfy'>
-//         <Template {...propConfig} />
-//       </Layout>
-//     )
+//   const propConfig = {
+//     className: text('className', 'template--custom')
 //   }
-// )
+//
+//   return (
+//     <Layout flex alignItems='center' justifyContent='center' height='comfy'>
+//       <Template {...propConfig} />
+//     </Layout>
+//   )
+// })
 //
 // export default {
 //   title: 'Template',

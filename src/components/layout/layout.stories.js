@@ -13,7 +13,7 @@ storiesOf('Layout', module).add('Default', () => {
       light: 'light',
       dark: 'dark',
       black: 'black'
-    }, null),
+    }, 'dark'),
     height: radios('height', {
       auto: 'auto',
       comfy: 'comfy',
