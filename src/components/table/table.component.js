@@ -127,7 +127,16 @@ Table.propTypes = {
   /**
    * A custom className for the component
    */
-  className: PropTypes.string
+  className: PropTypes.string,
+  columns: PropTypes.arrayOf(PropTypes.shape({
+    name: PropTypes.string.isRequired,
+    label: PropTypes.string.isRequired,
+    defaultValue: PropTypes.string,
+    align: PropTypes.oneOf(['left', 'center', 'right'])
+  })).isRequired,
+  rows: PropTypes.array.isRequired,
+  getFormattedValue: PropTypes.func,
+  getCustomCell: PropTypes.func
 }
 
 Table.defaultProps = {}

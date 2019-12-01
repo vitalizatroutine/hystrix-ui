@@ -1,0 +1,21 @@
+@import '../../styles/variables';
+
+.filler-block {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: gux(3);
+  background-color: $envy;
+  border-radius: $border-radius--small;
+
+  &_placeholder-text {
+    color: white;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+  }
+
+  &--slate {
+    background-color: $slate;
+  }
+}

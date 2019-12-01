@@ -5,12 +5,22 @@ import PropTypes from 'prop-types'
 import { getClassName } from '../../utils/'
 import './portal.component.css'
 
+/**
+ * Portal Component
+ * @param props
+ * @returns {*}
+ */
 function Portal (props) {
-  const {className, targetElementId, visible, masked, transitionSpeed, children, onCloseRequest} = props
+  const { className, targetElementId, visible, masked, transitionSpeed, children, onCloseRequest } = props
+  const portalTarget = document.getElementById(targetElementId)
+
+  if (!portalTarget) {
+    return null
+  }
 
   const baseClassName = getClassName('portal', [
-    {condition: className, trueClassName: className},
-    {condition: transitionSpeed, trueClassName: `portal--${transitionSpeed}-speed`}
+    { condition: className, trueClassName: className },
+    { condition: transitionSpeed, trueClassName: `portal--${transitionSpeed}-speed` }
   ])
 
   const timeout = {

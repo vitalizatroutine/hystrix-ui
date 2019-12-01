@@ -1,7 +1,7 @@
-import Layout from './layout/layout.component'
 import Customizer from './customizer/customizer.component'
+import FillerBlock from './fillerBlock/fillerBlock.component'
 
 export {
-  Layout,
-  Customizer
+  Customizer,
+  FillerBlock
 }

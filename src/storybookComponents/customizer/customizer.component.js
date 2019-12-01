@@ -2,7 +2,7 @@ import React, { PureComponent, cloneElement } from 'react'
 import PropTypes from 'prop-types'
 import { isUndefined, groupBy } from 'lodash'
 import { Checkbox, Field, Grid, GridColumn, RadioGroup } from '../../components'
-import { Layout } from '../../storybookComponents'
+import { Layout } from '../../components'
 import './customizer.component.css'
 
 class Customizer extends PureComponent {

@@ -1,65 +1,46 @@
 .table {
   display: table;
   width: 100%; }
-
-.table_header, .table_body, .table_row, .table_cell {
-  box-sizing: border-box; }
-
-.table_header {
-  display: table-header-group; }
-
-.table_body {
-  display: table-row-group; }
-
-.table_row {
-  display: table-row;
-  height: 40px; }
-
-.table_row--header {
-  background-color: #e50c3a; }
-
-.table_row--header .table_cell {
-  color: white; }
-
-.table_row--body:last-child .table_cell {
-  border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
-
-.table_row--even {
-  background-color: rgba(0, 0, 0, 0.025); }
-
-.table_row--clickable {
-  cursor: pointer; }
-
-.table_cell {
-  display: table-cell;
-  padding: 0 8px;
-  vertical-align: middle; }
-
-.table_cell--header:not(:last-child) {
-  border-right: 1px solid #ce0b34; }
-
-.table_cell--body:not(:last-child) {
-  border-right: 1px solid rgba(0, 0, 0, 0.1); }
-
-.table_cell--truncated {
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis; }
-
-.table_cell--align-left {
-  text-align: left; }
-
-.table_cell--align-center {
-  text-align: center; }
-
-.table_cell--align-right {
-  text-align: right; }
-
-.table--fixed {
-  table-layout: fixed; }
-
-.table--compact .table_row {
-  height: 24px; }
-
-.table--comfy .table_row {
-  height: 56px; }
+  .table_header, .table_body, .table_row, .table_cell {
+    box-sizing: border-box; }
+  .table_header {
+    display: table-header-group; }
+  .table_body {
+    display: table-row-group; }
+  .table_row {
+    display: table-row;
+    height: 40px; }
+    .table_row--header {
+      background-color: #e50c3a; }
+      .table_row--header .table_cell {
+        color: white; }
+    .table_row--body:last-child .table_cell {
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+    .table_row--even {
+      background-color: rgba(0, 0, 0, 0.025); }
+    .table_row--clickable {
+      cursor: pointer; }
+  .table_cell {
+    display: table-cell;
+    padding: 0 8px;
+    vertical-align: middle; }
+    .table_cell--header:not(:last-child) {
+      border-right: 1px solid #ce0b34; }
+    .table_cell--body:not(:last-child) {
+      border-right: 1px solid rgba(0, 0, 0, 0.1); }
+    .table_cell--truncated {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis; }
+    .table_cell--align-left {
+      text-align: left; }
+    .table_cell--align-center {
+      text-align: center; }
+    .table_cell--align-right {
+      text-align: right; }
+  .table--fixed {
+    table-layout: fixed; }
+  .table--compact .table_row {
+    height: 24px; }
+  .table--comfy .table_row {
+    height: 56px; }

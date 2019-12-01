@@ -1,0 +1,16 @@
+.filler-block {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  padding: 24px;
+  background-color: #e50c3a;
+  border-radius: 3px; }
+
+.filler-block_placeholder-text {
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px; }
+
+.filler-block--slate {
+  background-color: #262626; }

@@ -27,17 +27,18 @@
     opacity: 0;
   }
 
-  &--enter-active,
+  &--enter-active {
+    opacity: 1;
+    transition-property: opacity;
+  }
+
   &--exit {
     opacity: 1;
   }
 
-  &--enter-active, &--exit-active {
-    transition-property: opacity;
-  }
-
   &--exit-active {
     opacity: 0;
+    transition-property: opacity;
   }
 
   &--fast-speed {
@@ -47,13 +48,4 @@
   &--slow-speed {
     transition-duration: $transition-duration--slow;
   }
-}
-
-.work-in-progress {
-  padding: gux(5);
-  background-color: $envy;
-  color: white;
-  text-align: center;
-  top: 50%;
-  left: 50%;
 }
