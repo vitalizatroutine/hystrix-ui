@@ -1,9 +1,9 @@
-import React, { memo } from 'react'
+import React, { memo, forwardRef } from 'react'
 import PropTypes from 'prop-types'
 import { getClassName } from '../../utils/ui'
 import './fillerBlock.component.css'
 
-function FillerBlock (props) {
+function FillerBlock (props, ref) {
   const { id, className, styles, theme, placeholder, children } = props
 
   const baseClassName = getClassName('filler-block', [
@@ -12,7 +12,7 @@ function FillerBlock (props) {
   ])
 
   return (
-    <article id={id} className={baseClassName} style={styles}>
+    <article ref={ref} id={id} className={baseClassName} style={styles}>
       {children || (
         <span className='filler-block_placeholder-text'>{placeholder || 'Filler Block'}</span>
       )}
@@ -28,4 +28,4 @@ FillerBlock.propTypes = {
   children: PropTypes.oneOfType([PropTypes.string, PropTypes.array, PropTypes.object])
 }
 
-export default memo(FillerBlock)
+export default memo(forwardRef(FillerBlock))

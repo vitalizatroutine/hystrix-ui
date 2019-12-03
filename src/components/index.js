@@ -2,6 +2,7 @@ import Button from './button'
 import Grid from './grid'
 import GridColumn from './grid/column'
 import Layout from './layout'
+import Popover from './popover'
 import Portal from './portal'
 import Table from './table'
 
@@ -10,6 +11,7 @@ export {
   Grid,
   GridColumn,
   Layout,
+  Popover,
   Portal,
   Table
 }

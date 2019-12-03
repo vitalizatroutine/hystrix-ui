@@ -4,7 +4,7 @@ import { getClassName } from '../../../utils/'
 import './field.component.css'
 
 function Input (props) {
-  const {type, name, id, value, placeholder, minLength, maxLength, readOnly, handleInputChange} = props
+  const { type, name, id, value, placeholder, minLength, maxLength, readOnly, handleInputChange } = props
 
   return (
     <input
@@ -22,7 +22,7 @@ function Input (props) {
   )
 }
 
-function TextArea ({name, id, value, placeholder, readOnly, handleInputChange}) {
+function TextArea ({ name, id, value, placeholder, readOnly, handleInputChange }) {
   return (
     <textarea
       className='field_input'
@@ -37,15 +37,15 @@ function TextArea ({name, id, value, placeholder, readOnly, handleInputChange}) 
 }
 
 function Field (props) {
-  const {className, type, theme, size, label, value, id, readOnly, onChange} = props
+  const { className, type, theme, size, label, value, id, readOnly, onChange } = props
 
   const baseClassName = getClassName('field', [
-    {condition: className, trueClassName: className},
-    {condition: type, trueClassName: `field--${type}`},
-    {condition: theme, trueClassName: `field--${theme}`},
-    {condition: size, trueClassName: `field--${size}`},
-    {condition: readOnly, trueClassName: `field--disabled`},
-    {condition: value, falseClassName: 'field--empty'}
+    { condition: className, trueClassName: className },
+    { condition: type, trueClassName: `field--${type}` },
+    { condition: theme, trueClassName: `field--${theme}` },
+    { condition: size, trueClassName: `field--${size}` },
+    { condition: readOnly, trueClassName: 'field--disabled' },
+    { condition: value, falseClassName: 'field--empty' }
   ])
 
   const renderInput = () => {
@@ -63,12 +63,12 @@ function Field (props) {
 
     switch (type) {
       case 'textarea':
-        return <TextArea {...props} handleInputChange={handleInputChange}/>
+        return <TextArea {...props} handleInputChange={handleInputChange} />
       case 'number':
       case 'text':
       case 'password':
       default:
-        return <Input {...props} handleInputChange={handleInputChange}/>
+        return <Input {...props} handleInputChange={handleInputChange} />
     }
   }
 
