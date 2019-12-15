@@ -1,9 +1,9 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { action } from '@storybook/addon-actions'
+import withCustomizer from '../../storybookAddons/customizer'
 
-import { Customizer } from '../../storybookComponents'
-import Button from './button.component'
+import { Button, Layout } from '../../components'
 
 const propConfig = [{
   field: 'className',
@@ -65,9 +65,19 @@ const propConfig = [{
   initialValue: action('Button onClick has been triggered')
 }]
 
-storiesOf('Button', module).add('Default', () => (
-  <Customizer config={propConfig} component={<Button />} />
-))
+storiesOf('Button', module).addDecorator(withCustomizer).add('Default', () => (
+  <Layout flex alignItems='center' justifyContent='center' height='fill'>
+    <Button {...propConfig.reduce((props, prop) => {
+      props[prop.field] = prop.placeholder || prop.initialValue
+      return props
+    }, {})}
+    />
+  </Layout>
+), {
+  customizerParams: {
+    a: 'b'
+  }
+})
 
 export default {
   title: 'Button',

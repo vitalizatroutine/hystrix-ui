@@ -123,6 +123,10 @@ class Customizer extends PureComponent {
     const { config, component } = this.props
     const { customProps } = this.state
 
+    if (!component) {
+      return null
+    }
+
     const propGroups = groupBy(config || [], 'type')
 
     return (
