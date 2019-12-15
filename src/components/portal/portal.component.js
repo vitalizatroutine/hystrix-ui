@@ -53,6 +53,12 @@ Portal.propTypes = {
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 
   /**
+   * Used to determine the id of the element that the portal will append itself to
+   * Note: there is no need to provide the # prefix
+   */
+  targetElementId: PropTypes.string,
+
+  /**
    * Used to determine whether or not the component should appear visible
    */
   visible: PropTypes.bool.isRequired,
