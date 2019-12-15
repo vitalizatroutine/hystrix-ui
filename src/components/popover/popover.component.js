@@ -4,32 +4,91 @@ import { getClassName } from '../../utils/'
 import { Portal } from '../../components'
 import './popover.component.css'
 
+/**
+ * Popover Component
+ * @param props
+ * @returns {null|*}
+ */
 function Popover (props) {
   const {
-    className, children, targetElementId, visible, masked, transitionSpeed,
-    targetReference, popoverOrigin, targetOrigin, offsetMargin, onCloseRequest
+    className, children, portalTargetElementId, visible, masked, transitionSpeed,
+    targetElementId, targetReference, popoverOrigin, targetOrigin, offsetMargin, matchWidth, matchHeight,
+    onCloseRequest
   } = props
 
   const baseStyles = getStyles()
+
+  if (!baseStyles) {
+    return null
+  }
+
   const baseClassName = getClassName('popover', [
     { condition: className, trueClassName: className }
   ])
+
+  /**
+   * Get Target bounding rect props for poopover positioning
+   */
+  function getTargetBoundingRect () {
+    if (!targetReference && !targetElementId) {
+      return null
+    }
+
+    if (targetReference && targetReference.current) {
+      const TargetComponentRect = targetReference.current.getBoundingClientRect()
+      const { top: refTop, left: refLeft, width: refWidth, height: refHeight } = TargetComponentRect
+
+      return {
+        top: refTop,
+        left: refLeft,
+        width: refWidth,
+        height: refHeight
+      }
+    }
+
+    if (targetElementId) {
+      const target = document.getElementById(targetElementId)
+
+      if (!target || !target.getBoundingClientRect) {
+        console.warn(`Popover component is unable to find target element or access a boundingClientRect with the currently proposed targetElementId prop, ${targetElementId}.`)
+        return null
+      }
+
+      const { top: elTop, left: elLef, width: elWdidth, height: elHeight } = target.getBoundingClientRect()
+
+      return {
+        top: elTop,
+        left: elLef,
+        width: elWdidth,
+        height: elHeight
+      }
+    }
+  }
 
   /**
    * Get Popover styles
    * @returns {Object}
    */
   function getStyles () {
+    const targetBoundingRect = getTargetBoundingRect()
+
+    if (!targetBoundingRect) {
+      return null
+    }
+
+    const anchorPositionProperties = getAnchorPositionProperties(targetBoundingRect)
     const popoverPositionProperties = getPopoverPositionProperties()
 
     return {
       anchor: {
-        ...getAnchorPositionProperties(),
+        ...anchorPositionProperties,
         transformOrigin: popoverOrigin ? popoverOrigin.replace('-', ' ') : null
       },
       inner: {
         [popoverPositionProperties.horizontal]: 0,
         [popoverPositionProperties.vertical]: 0,
+        width: matchWidth ? targetBoundingRect.width : null,
+        height: matchHeight ? targetBoundingRect.height : null,
         margin: offsetMargin,
         transform: popoverPositionProperties.transform
       }
@@ -40,16 +99,11 @@ function Popover (props) {
    * Get Target's coordinates based on origin prop
    * @returns {{left: number, top: number}}
    */
-  function getAnchorPositionProperties () {
-    const TargetComponentRect = targetReference && targetReference.current && targetReference.current.getBoundingClientRect()
-    const { top, left, width, height } = TargetComponentRect || {}
-
-    const coordinates = {
-      left,
-      top: top + height
-    }
+  function getAnchorPositionProperties ({ left, top, width, height }) {
+    const coordinates = {}
 
     switch (targetOrigin) {
+      default:
       case 'top-left':
         coordinates.left = left
         coordinates.top = top
@@ -90,7 +144,6 @@ function Popover (props) {
         coordinates.left = left + width
         coordinates.top = top + height
         break
-      default:
     }
 
     return {
@@ -161,11 +214,9 @@ function Popover (props) {
     return properties
   }
 
-  console.log('targetReference', targetReference)
-
   return (
     <Portal
-      targetElementId={targetElementId}
+      targetElementId={portalTargetElementId}
       visible={visible}
       transitionSpeed={transitionSpeed}
       masked={masked}
@@ -192,9 +243,20 @@ Popover.propTypes = {
   children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
 
   /**
+   * The element id selector provided to the root Portal component
+   * Note: there is no need to provide the # prefix
+   */
+  portalTargetElementId: PropTypes.string,
+
+  /**
+   * The element id selector for the component to consume as anchor reference
+   */
+  targetElementId: PropTypes.string,
+
+  /**
    * A JSX ref for the component to consume as anchor reference
    */
-  targetReference: PropTypes.object.isRequired,
+  targetReference: PropTypes.object,
 
   /**
    * Used to determine the target reference's point of origin from which the popover will anchor to
@@ -221,6 +283,16 @@ Popover.propTypes = {
     bottom: PropTypes.number,
     left: PropTypes.number
   })]),
+
+  /**
+   * Used to determine whether or not to render the portal component with a matching width of its target element
+   */
+  matchWidth: PropTypes.bool,
+
+  /**
+   * Used to determine whether or not to render the portal component with a matching height of its target element
+   */
+  matchHeight: PropTypes.bool,
 
   /**
    * Used to determine whether or not the component should appear visible
