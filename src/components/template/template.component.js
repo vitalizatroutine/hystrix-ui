@@ -1,17 +1,17 @@
 import React, { memo } from 'react'
-import PropTypes from 'prop-types'
+import { string, object, array, oneOfType } from 'prop-types'
 import { getClassName } from '../../utils/'
 import './template.component.css'
 
 function Template (props) {
-  const { className, children } = props
+  const { className, id, children } = props
 
   const baseClassName = getClassName('template', [
     { condition: className, trueClassName: className }
   ])
 
   return (
-    <div className={baseClassName}>
+    <div className={baseClassName} id={id}>
       {children}
     </div>
   )
@@ -21,12 +21,17 @@ Template.propTypes = {
   /**
    * A custom className for the component
    */
-  className: PropTypes.string,
+  className: string,
+
+  /**
+   * A custom id className for the component
+   */
+  id: string,
 
   /**
    * The children to render inside the component
    */
-  children: PropTypes.oneOfType([PropTypes.object, PropTypes.array])
+  children: oneOfType([object, array])
 }
 
 Template.defaultProps = {}

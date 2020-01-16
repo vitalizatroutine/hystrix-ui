@@ -23,8 +23,8 @@ const propConfig = [{
 }, {
   field: 'icon',
   type: 'text',
-  initialValue: '😴',
-  placeholder: '😴'
+  initialValue: 'fa fa-plus',
+  placeholder: 'fa fa-plus'
 }, {
   field: 'square',
   type: 'boolean',

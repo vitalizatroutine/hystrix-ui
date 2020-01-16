@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import PropTypes from 'prop-types'
+import { string, func, array, shape, oneOf, arrayOf } from 'prop-types'
 import { get } from 'lodash'
 import { getClassName } from '../../utils/'
 import './table.component.css'
@@ -107,7 +107,7 @@ function TableBody (props) {
 }
 
 function Table (props) {
-  const { className, size, fixed } = props
+  const { className, id, size, fixed } = props
 
   const baseClassName = getClassName('table', [
     { condition: className, trueClassName: className },
@@ -116,7 +116,7 @@ function Table (props) {
   ])
 
   return (
-    <div className={baseClassName}>
+    <div className={baseClassName} id={id}>
       <TableHeader {...props} />
       <TableBody {...props} />
     </div>
@@ -127,16 +127,22 @@ Table.propTypes = {
   /**
    * A custom className for the component
    */
-  className: PropTypes.string,
-  columns: PropTypes.arrayOf(PropTypes.shape({
-    name: PropTypes.string.isRequired,
-    label: PropTypes.string.isRequired,
-    defaultValue: PropTypes.string,
-    align: PropTypes.oneOf(['left', 'center', 'right'])
+  className: string,
+
+  /**
+   * A custom id for the component
+   */
+  id: string,
+
+  columns: arrayOf(shape({
+    name: string.isRequired,
+    label: string.isRequired,
+    defaultValue: string,
+    align: oneOf(['left', 'center', 'right'])
   })).isRequired,
-  rows: PropTypes.array.isRequired,
-  getFormattedValue: PropTypes.func,
-  getCustomCell: PropTypes.func
+  rows: array.isRequired,
+  getFormattedValue: func,
+  getCustomCell: func
 }
 
 Table.defaultProps = {}

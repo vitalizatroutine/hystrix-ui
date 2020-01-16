@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import { CSSTransition } from 'react-transition-group'
 import ReactDOM from 'react-dom'
-import PropTypes from 'prop-types'
+import { string, object, bool, func, array, oneOf, oneOfType } from 'prop-types'
 import { getClassName } from '../../utils/'
 import './portal.component.css'
 
@@ -11,7 +11,7 @@ import './portal.component.css'
  * @returns {*}
  */
 function Portal (props) {
-  const { className, targetElementId, visible, masked, transitionSpeed, children, onCloseRequest } = props
+  const { className, id, targetElementId, visible, masked, transitionSpeed, children, onCloseRequest } = props
   const portalTarget = document.getElementById(targetElementId)
 
   if (!portalTarget) {
@@ -31,7 +31,7 @@ function Portal (props) {
 
   return ReactDOM.createPortal((
     <CSSTransition in={visible} classNames='portal-' timeout={timeout} unmountOnExit>
-      <div className={baseClassName}>
+      <div className={baseClassName} id={id}>
         {masked && (
           <div className='portal_mask' onClick={onCloseRequest} />
         )}
@@ -45,38 +45,43 @@ Portal.propTypes = {
   /**
    * A custom className for the component
    */
-  className: PropTypes.string,
+  className: string,
+
+  /**
+   * A custom id for the component
+   */
+  id: string,
 
   /**
    * The children to render inside the component
    */
-  children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  children: oneOfType([object, array]),
 
   /**
    * Used to determine the id of the element that the portal will append itself to
    * Note: there is no need to provide the # prefix
    */
-  targetElementId: PropTypes.string,
+  targetElementId: string,
 
   /**
    * Used to determine whether or not the component should appear visible
    */
-  visible: PropTypes.bool.isRequired,
+  visible: bool.isRequired,
 
   /**
    * Used to determine whether or not to render a mask inside the portal
    */
-  masked: PropTypes.bool,
+  masked: bool,
 
   /**
    * Used to determine the speed of the Portal during transition phases
    */
-  transitionSpeed: PropTypes.oneOf(['fast', 'default', 'slow']),
+  transitionSpeed: oneOf(['fast', 'default', 'slow']),
 
   /**
    * A callback for when the portal requests to be closed from the inside
    */
-  onCloseRequest: PropTypes.func
+  onCloseRequest: func
 }
 
 Portal.defaultProps = {

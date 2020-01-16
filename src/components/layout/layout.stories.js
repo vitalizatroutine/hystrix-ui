@@ -2,7 +2,8 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { text, boolean, radios } from '@storybook/addon-knobs'
 
-import { Layout, Button } from '../../components'
+import { FillerBlock } from '../../storybookComponents'
+import { Layout } from '../../components'
 
 storiesOf('Layout', module).add('Default', () => {
   const propConfig = {
@@ -48,7 +49,7 @@ storiesOf('Layout', module).add('Default', () => {
 
   return (
     <Layout {...propConfig}>
-      <Button label='Nothing to see here' />
+      <FillerBlock />
     </Layout>
   )
 })

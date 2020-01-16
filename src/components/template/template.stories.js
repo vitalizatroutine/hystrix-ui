@@ -11,7 +11,7 @@
 //   }
 //
 //   return (
-//     <Layout flex alignItems='center' justifyContent='center' height='comfy'>
+//     <Layout height='comfy'>
 //       <Template {...propConfig} />
 //     </Layout>
 //   )

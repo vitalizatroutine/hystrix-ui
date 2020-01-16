@@ -1,10 +1,13 @@
 import React, { useState, memo } from 'react'
-import PropTypes from 'prop-types'
+import { string, number, object, bool, func, oneOf, oneOfType } from 'prop-types'
 import { getClassName } from '../../../utils/'
 import './field.component.css'
 
 function Input (props) {
-  const { type, name, id, value, placeholder, minLength, maxLength, readOnly, handleInputChange } = props
+  const {
+    type, name, id, value, placeholder, minLength, maxLength, readOnly,
+    onFocus, onBlur, handleInputChange
+  } = props
 
   return (
     <input
@@ -17,12 +20,14 @@ function Input (props) {
       maxLength={maxLength}
       readOnly={readOnly ? 'readonly' : null}
       placeholder={placeholder}
+      onFocus={onFocus}
+      onBlur={onBlur}
       onChange={handleInputChange}
     />
   )
 }
 
-function TextArea ({ name, id, value, placeholder, readOnly, handleInputChange }) {
+function TextArea ({ name, id, value, placeholder, readOnly, onFocus, onBlur, handleInputChange }) {
   return (
     <textarea
       className='field_input'
@@ -31,6 +36,8 @@ function TextArea ({ name, id, value, placeholder, readOnly, handleInputChange }
       value={value}
       readOnly={readOnly ? 'readonly' : null}
       placeholder={placeholder}
+      onFocus={onFocus}
+      onBlur={onBlur}
       onChange={handleInputChange}
     />
   )
@@ -48,19 +55,19 @@ function Field (props) {
     { condition: value, falseClassName: 'field--empty' }
   ])
 
-  const renderInput = () => {
-    const handleInputChange = (event) => {
-      if (readOnly) {
-        return
-      }
-
-      event.persist()
-      const target = event.target
-      const newValue = target.value
-
-      onChange && onChange(newValue, event)
+  function handleInputChange (event) {
+    if (readOnly) {
+      return
     }
 
+    event.persist()
+    const target = event.target
+    const newValue = target.value
+
+    onChange && onChange(newValue, event)
+  }
+
+  function renderInput () {
     switch (type) {
       case 'textarea':
         return <TextArea {...props} handleInputChange={handleInputChange} />
@@ -81,19 +88,21 @@ function Field (props) {
 }
 
 Field.propTypes = {
-  className: PropTypes.string,
-  type: PropTypes.string,
-  theme: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'default', 'large']),
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-  value: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
-  id: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  minLength: PropTypes.number,
-  maxLength: PropTypes.number,
-  placeholder: PropTypes.string,
-  readyOnly: PropTypes.bool,
-  onChange: PropTypes.func
+  className: string,
+  type: string,
+  theme: string,
+  size: oneOf(['small', 'default', 'large']),
+  label: oneOfType([string, object]),
+  value: oneOfType([string, number]),
+  id: string.isRequired,
+  name: string.isRequired,
+  minLength: number,
+  maxLength: number,
+  placeholder: string,
+  readyOnly: bool,
+  onFocus: func,
+  onBlur: func,
+  onChange: func
 }
 
 Field.defaultProps = {

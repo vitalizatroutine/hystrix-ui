@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import PropTypes from 'prop-types'
+import { string, number, object, bool, func, array, shape, oneOf, oneOfType } from 'prop-types'
 import { getClassName } from '../../utils/'
 import { Portal } from '../../components'
 import './popover.component.css'
@@ -11,7 +11,7 @@ import './popover.component.css'
  */
 function Popover (props) {
   const {
-    className, children, portalTargetElementId, visible, masked, transitionSpeed,
+    className, id, children, portalTargetElementId, visible, masked, transitionSpeed,
     targetElementId, targetReference, popoverOrigin, targetOrigin, offsetMargin, matchWidth, matchHeight,
     onCloseRequest
   } = props
@@ -222,7 +222,7 @@ function Popover (props) {
       masked={masked}
       onCloseRequest={onCloseRequest}
     >
-      <div className={baseClassName} style={baseStyles.anchor}>
+      <div className={baseClassName} id={id} style={baseStyles.anchor}>
         <div className='popover_inner' style={baseStyles.inner}>
           {children}
         </div>
@@ -235,33 +235,38 @@ Popover.propTypes = {
   /**
    * A custom className for the component
    */
-  className: PropTypes.string,
+  className: string,
+
+  /**
+   * A custom id for the component
+   */
+  id: string,
 
   /**
    * The children to render inside the component
    */
-  children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  children: oneOfType([object, array]),
 
   /**
    * The element id selector provided to the root Portal component
    * Note: there is no need to provide the # prefix
    */
-  portalTargetElementId: PropTypes.string,
+  portalTargetElementId: string,
 
   /**
    * The element id selector for the component to consume as anchor reference
    */
-  targetElementId: PropTypes.string,
+  targetElementId: string,
 
   /**
    * A JSX ref for the component to consume as anchor reference
    */
-  targetReference: PropTypes.object,
+  targetReference: object,
 
   /**
    * Used to determine the target reference's point of origin from which the popover will anchor to
    */
-  targetOrigin: PropTypes.oneOf([
+  targetOrigin: oneOf([
     'top-left', 'top', 'top-center', 'top-right', 'left', 'center-left', 'center',
     'right', 'center-right', 'bottom-left', 'bottom', 'bottom-center', 'bottom-right'
   ]),
@@ -269,7 +274,7 @@ Popover.propTypes = {
   /**
    * Used to determine the popover's point of origin to render from
    */
-  popoverOrigin: PropTypes.oneOf([
+  popoverOrigin: oneOf([
     'top-left', 'top', 'top-center', 'top-right', 'left', 'center-left', 'center',
     'right', 'center-right', 'bottom-left', 'bottom', 'bottom-center', 'bottom-right'
   ]),
@@ -277,42 +282,42 @@ Popover.propTypes = {
   /**
    * Used to provide the popover anchor with a margin from the target's origin
    */
-  offsetMargin: PropTypes.oneOfType([PropTypes.string, PropTypes.number, PropTypes.shape({
-    top: PropTypes.number,
-    right: PropTypes.number,
-    bottom: PropTypes.number,
-    left: PropTypes.number
+  offsetMargin: oneOfType([string, number, shape({
+    top: number,
+    right: number,
+    bottom: number,
+    left: number
   })]),
 
   /**
    * Used to determine whether or not to render the portal component with a matching width of its target element
    */
-  matchWidth: PropTypes.bool,
+  matchWidth: bool,
 
   /**
    * Used to determine whether or not to render the portal component with a matching height of its target element
    */
-  matchHeight: PropTypes.bool,
+  matchHeight: bool,
 
   /**
    * Used to determine whether or not the component should appear visible
    */
-  visible: PropTypes.bool.isRequired,
+  visible: bool.isRequired,
 
   /**
    * Used to determine whether or not to render a mask inside the portal
    */
-  masked: PropTypes.bool,
+  masked: bool,
 
   /**
    * Used to determine the speed of the Portal during transition phases
    */
-  transitionSpeed: PropTypes.oneOf(['fast', 'default', 'slow']),
+  transitionSpeed: oneOf(['fast', 'default', 'slow']),
 
   /**
    * A callback for when the portal requests to be closed from the inside
    */
-  onCloseRequest: PropTypes.func
+  onCloseRequest: func
 }
 
 Popover.defaultProps = {

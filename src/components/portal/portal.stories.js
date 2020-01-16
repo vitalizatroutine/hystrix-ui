@@ -26,7 +26,7 @@ storiesOf('Portal', module).add('Default', () => {
   }
 
   return (
-    <Layout flex alignItems='center' justifyContent='center' height='fill'>
+    <Layout theme='dark' height='fill'>
       <FillerBlock id='storyTarget' />
       <Portal {...propConfig}>
         <FillerBlock theme='slate' placeholder='Portal Content' />

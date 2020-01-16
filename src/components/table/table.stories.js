@@ -76,7 +76,7 @@ storiesOf('Table', module).add('Default', () => {
   }
 
   return (
-    <Layout flex alignItems='center' justifyContent='center' height='fill'>
+    <Layout theme='dark' height='fill'>
       <Table {...propConfig} />
     </Layout>
   )

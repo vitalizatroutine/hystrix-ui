@@ -1,56 +1,61 @@
 import React, { memo, useState, useEffect } from 'react'
-import PropTypes from 'prop-types'
+import { string, object, bool, func, shape, oneOf, oneOfType } from 'prop-types'
 import { getClassName } from '../../utils/'
 
-import {
-  useKeyboardListenerDispatch,
-  SUBSCRIBE_TO_KEYBOARD_EVENT,
-  UNSUBSCRIBE_FROM_KEYBOARD_EVENT
-} from '../../context'
 import { Field, Popover } from '../../components'
 
 import './select.component.css'
 
 function Select (props) {
-  const { className, forceMenuOpen } = props
+  const { className, id, name, theme, forceMenuOpen } = props
 
-  const keyDispatch = useKeyboardListenerDispatch()
   const [menuOpen, setMenuOpen] = useState(forceMenuOpen || false)
 
   const baseClassName = getClassName('select', [
     { condition: className, trueClassName: className }
   ])
 
-  useEffect(() => {
-    if (typeof forceMenuOpen === 'undefined' ? menuOpen : forceMenuOpen) {
-      console.log('subscribe')
-      keyDispatch({
-        type: SUBSCRIBE_TO_KEYBOARD_EVENT,
-        payload: { id: 'select--enter', key: 13, onTrigger: handleEnterKey }
-      })
-    }
+  function handleFieldFocus () {
+    setMenuOpen(true)
+  }
 
-    if (typeof forceMenuOpen === 'undefined' ? !menuOpen : !forceMenuOpen) {
-      keyDispatch({ type: UNSUBSCRIBE_FROM_KEYBOARD_EVENT, payload: 'select--enter' })
-    }
+  function handleFieldBlur () {
+    setMenuOpen(false)
+    console.log('we blurred!')
+  }
 
-    return keyDispatch({ type: UNSUBSCRIBE_FROM_KEYBOARD_EVENT, payload: 'select--enter' })
-  }, [menuOpen, forceMenuOpen])
+  function handleFieldChange (newValue) {
+    console.log('newValue', newValue)
+  }
 
-  function handleEnterKey () {
-    console.log('we hit enter!')
+  function handlePopoverClose () {
+    setMenuOpen(false)
   }
 
   return (
-    <div
-      className={baseClassName}
-      onClick={() => keyDispatch({
-        type: SUBSCRIBE_TO_KEYBOARD_EVENT,
-        payload: { id: 'select--enter', key: 13, onTrigger: handleEnterKey }
-      })}
-      onDoubleClick={() => keyDispatch({ type: UNSUBSCRIBE_FROM_KEYBOARD_EVENT, payload: 'select--enter' })}
-    >
-      {menuOpen ? 'open ' : 'closed'}
+    <div className={baseClassName}>
+      <Field
+        theme={theme}
+        type='text'
+        id={id}
+        name={name}
+        readyOnly={false}
+        onFocus={handleFieldFocus}
+        onBlur={handleFieldBlur}
+        onChange={handleFieldChange}
+      />
+      <Popover
+        targetElementId={id}
+        transitionSpeed='fast'
+        targetOrigin='bottom'
+        popoverOrigin='top'
+        matchWidth
+        masked={false}
+        visible={forceMenuOpen || menuOpen}
+        onCloseRequest={handlePopoverClose}
+      >
+        <p>Stuff</p>
+      </Popover>
     </div>
   )
 }
@@ -59,7 +64,12 @@ Select.propTypes = {
   /**
    * A custom className for the component
    */
-  className: PropTypes.string
+  className: string,
+
+  /**
+   * A custom id for the component
+   */
+  id: string
 }
 
 Select.defaultProps = {}

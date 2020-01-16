@@ -18,4 +18,12 @@
   &--slate {
     background-color: $slate;
   }
+
+  &--small {
+    padding: gux(1);
+  }
+
+  &--large {
+    padding: gux(5);
+  }
 }

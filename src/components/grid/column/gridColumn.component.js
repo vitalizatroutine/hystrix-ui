@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import PropTypes from 'prop-types'
+import { string, object, bool, array, oneOf, oneOfType } from 'prop-types'
 import { getClassName } from '../../../utils/'
 
 const columnGroups = [2, 3, 4, 5, 6, 8, 12]
@@ -12,7 +12,7 @@ const columnModifiers = columnGroups.reduce((accumulator, currentGroup) => {
 }, ['1-of-1'])
 
 function GridColumn (props) {
-  const {className, children, width, smallWidth, mobileWidth, first, last, centered, verticalAlign} = props
+  const {className, id, children, width, smallWidth, mobileWidth, first, last, centered, verticalAlign} = props
 
   const baseClassName = getClassName('grid_col', [
     {condition: className, trueClassName: className},
@@ -26,7 +26,7 @@ function GridColumn (props) {
   ])
 
   return (
-    <div className={baseClassName}>
+    <div className={baseClassName} id={id}>
       {children}
     </div>
   )
@@ -36,41 +36,46 @@ GridColumn.propTypes = {
   /**
    * A custom className for the component
    */
-  className: PropTypes.string,
+  className: string,
+
+  /**
+   * A custom id for the component
+   */
+  id: string,
 
   /**
    * The children to render inside the component
    */
-  children: PropTypes.oneOfType([PropTypes.object, PropTypes.array]),
+  children: oneOfType([object, array]),
 
   /**
    * Used to determine the width of the grid column
    * Structure: `${amount of columns to take up}-of-${total amount of columns}`
    * Example: '1-of-4'
    */
-  width: PropTypes.oneOf(columnModifiers),
-  smallWidth: PropTypes.oneOf(columnModifiers),
-  mobileWidth: PropTypes.oneOf(columnModifiers),
+  width: oneOf(columnModifiers),
+  smallWidth: oneOf(columnModifiers),
+  mobileWidth: oneOf(columnModifiers),
 
   /**
    * Used to determine whether or not to draw the column first
    */
-  first: PropTypes.bool,
+  first: bool,
 
   /**
    * Used to determine whether or not to draw the column last
    */
-  last: PropTypes.bool,
+  last: bool,
 
   /**
    * Used to determine whether or not to draw the column in the center
    */
-  centered: PropTypes.bool,
+  centered: bool,
 
   /**
    * Used to determine the vertical alignment of the column
    */
-  verticalAlign: PropTypes.oneOf(['top', 'middle', 'bottom'])
+  verticalAlign: oneOf(['top', 'middle', 'bottom'])
 }
 
 GridColumn.defaultProps = {

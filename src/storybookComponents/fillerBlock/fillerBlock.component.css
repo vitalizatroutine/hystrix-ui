@@ -6,9 +6,17 @@
   padding: 24px;
   background-color: #e50c3a;
   border-radius: 3px; }
-  .filler-block_placeholder-text {
-    color: white;
-    text-transform: uppercase;
-    letter-spacing: 1px; }
-  .filler-block--slate {
-    background-color: #262626; }
+
+.filler-block_placeholder-text {
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px; }
+
+.filler-block--slate {
+  background-color: #262626; }
+
+.filler-block--small {
+  padding: 8px; }
+
+.filler-block--large {
+  padding: 40px; }

@@ -1,9 +1,9 @@
 import React, { memo } from 'react'
-import PropTypes from 'prop-types'
+import { string, bool, oneOf } from 'prop-types'
 import { getClassName } from '../../utils/ui/index'
 import './layout.component.css'
 
-function Layout ({ children, className, theme, height, paddingMultiplier, flex, justifyContent, alignItems, direction }) {
+function Layout ({ children, className, id, theme, height, paddingMultiplier, flex, justifyContent, alignItems, direction }) {
   const baseClassName = getClassName('layout', [
     { condition: className, trueClassName: className },
     { condition: theme, trueClassName: `layout--${theme}` },
@@ -16,7 +16,7 @@ function Layout ({ children, className, theme, height, paddingMultiplier, flex, 
   ])
 
   return (
-    <div className={baseClassName}>
+    <div className={baseClassName} id={id}>
       {children}
     </div>
   )
@@ -26,42 +26,47 @@ Layout.propTypes = {
   /**
    * A custom className for the component
    */
-  className: PropTypes.string,
+  className: string,
+
+  /**
+   * A custom id for the component
+   */
+  id: string,
 
   /**
    * The theme for the component
    */
-  theme: PropTypes.oneOf(['white', 'light', 'dark', 'black']),
+  theme: oneOf(['white', 'light', 'dark', 'black']),
 
   /**
    * The height of the component
    */
-  height: PropTypes.oneOf(['auto', 'comfy', 'fill']),
+  height: oneOf(['auto', 'comfy', 'fill']),
 
   /**
    * Amount of padding surrounding the component in grid units (8px)
    */
-  paddingMultiplier: PropTypes.oneOf(['one', 'two', 'three', 'four', 'five']),
+  paddingMultiplier: oneOf(['one', 'two', 'three', 'four', 'five']),
 
   /**
    * Whether or not to use flex styles
    */
-  flex: PropTypes.bool,
+  flex: bool,
 
   /**
    * Horizontal alignment for children within the component
    */
-  justifyContent: PropTypes.oneOf(['flex-start', 'center', 'flex-end', 'space-between', 'space-around']),
+  justifyContent: oneOf(['flex-start', 'center', 'flex-end', 'space-between', 'space-around']),
 
   /**
    * Vertical alignment for children within the component
    */
-  alignItems: PropTypes.oneOf(['flex-start', 'center', 'flex-end', 'stretched']),
+  alignItems: oneOf(['flex-start', 'center', 'flex-end', 'stretched']),
 
   /**
    * Vertical alignment for children within the component
    */
-  direction: PropTypes.oneOf(['row', 'column'])
+  direction: oneOf(['row', 'column'])
 }
 
 Layout.defaultProps = {

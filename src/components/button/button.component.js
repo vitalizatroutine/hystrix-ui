@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import PropTypes from 'prop-types'
+import { string, object, bool, func, shape, oneOf, oneOfType } from 'prop-types'
 import { getClassName } from '../../utils'
 import './button.component.css'
 
@@ -8,7 +8,7 @@ import './button.component.css'
  */
 function Button (props) {
   const {
-    className, reference, linkTo, linkTarget, styles, label, icon,
+    className, linkTo, linkTarget, styles, label, icon,
     theme, size, wide, circle, square,
     loading, invisible, hidden, disabled,
     onClick
@@ -34,13 +34,13 @@ function Button (props) {
   ])
 
   return linkTo ? (
-    <a className={baseClassName} to={linkTo} target={linkTarget} style={styles && styles.base} onClick={handleClick} ref={reference}>
-      {icon && <span className='button_icon' style={styles && styles.icon}>{icon}</span>}
+    <a className={baseClassName} href={linkTo} target={linkTarget} style={styles && styles.base} onClick={handleClick} ref={reference}>
+      {icon && <i className={`button_icon ${icon}`} style={styles && styles.icon}/>}
       {label && <span className='button_label' style={styles && styles.label}>{label}</span>}
     </a>
   ) : (
-    <button className={baseClassName} style={styles && styles.base} onClick={handleClick} ref={reference}>
-      {icon && <span className='button_icon' style={styles && styles.icon}>{icon}</span>}
+    <button className={baseClassName} style={styles && styles.base} onClick={handleClick}>
+      {icon && <i className={`button_icon ${icon}`} style={styles && styles.icon}/>}
       {label && <span className='button_label' style={styles && styles.label}>{label}</span>}
     </button>
   )
@@ -50,75 +50,75 @@ Button.propTypes = {
   /**
    * A custom className to add to the component
    */
-  className: PropTypes.string,
+  className: string,
 
   /**
-   * Used to determine the ref attribute of the returned element
+   * a custom id to add to the component
    */
-  reference: PropTypes.object,
+  id: string,
 
   /**
    * Used to transform the button into a Link component
    * Note: prop provides link url
    */
-  linkTo: PropTypes.string,
+  linkTo: string,
 
   /**
    * Custom styles passed into the component
    */
-  styles: PropTypes.shape({
-    base: PropTypes.object,
-    icon: PropTypes.object,
-    label: PropTypes.object
+  styles: shape({
+    base: object,
+    icon: object,
+    label: object
   }),
 
   /**
    * Used to provide the button with a label
    */
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  label: oneOfType([string, object]),
 
   /**
    * Used to provide the button with an icon
    */
-  icon: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  icon: oneOfType([string, object]),
 
   /**
    * Used to paint the Button using a specific theme
    */
-  theme: PropTypes.string,
+  theme: string,
 
   /**
    * Used to modify the Button component with various modifiers
    */
-  size: PropTypes.oneOf(['small', 'default', 'large']),
-  square: PropTypes.bool,
-  circle: PropTypes.bool,
-  wide: PropTypes.bool,
+  size: oneOf(['small', 'default', 'large']),
+  square: bool,
+  circle: bool,
+  wide: bool,
 
   /**
    * Used to paint the Button component with a pulsing loader
    */
-  loading: PropTypes.bool,
+  loading: bool,
 
   /**
    * Used to hide the Button component with opacity
    */
-  invisible: PropTypes.bool,
+  invisible: bool,
 
   /**
    * Used to hide the Button component with display: none
    */
-  hidden: PropTypes.bool,
+  hidden: bool,
 
   /**
    * Used to disable interaction with the Button component
    */
-  disabled: PropTypes.bool,
+  disabled: bool,
 
   /**
    * A callback for when the user clicks the Button component
    */
-  onClick: PropTypes.func
+  onClick: func
 }
 
 Button.defaultProps = {

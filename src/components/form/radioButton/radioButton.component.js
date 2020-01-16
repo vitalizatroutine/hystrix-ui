@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import PropTypes from 'prop-types'
+import { string, object, bool, func, shape, oneOf, oneOfType } from 'prop-types'
 import { getClassName } from '../../../utils/ui'
 import './radioButton.component.css'
 
@@ -74,49 +74,49 @@ RadioButton.propTypes = {
   /**
    * A custom className to pass into the component
    */
-  className: PropTypes.string,
+  className: string,
 
   /**
    * A unique ID for the radio button and radio button label
    */
-  id: PropTypes.string.isRequired,
+  id: string.isRequired,
 
   /**
    * The name attribute used in the radio button input
    */
-  name: PropTypes.string,
+  name: string,
 
   /**
    * Used to determine checked state for the radio button input
    */
-  checked: PropTypes.bool.isRequired,
+  checked: bool.isRequired,
 
   /**
    * Used to paint the component using a specific theme
    */
-  theme: PropTypes.string,
+  theme: string,
 
   /**
    * Used to overwrite checkbox colour while in checked state
    */
-  customRadioButtonColor: PropTypes.string,
+  customRadioButtonColor: string,
 
   /**
    * Used to determine the size of the radio button
    */
-  size: PropTypes.oneOf(['small', 'default', 'large']),
+  size: oneOf(['small', 'default', 'large']),
 
   /**
    * The default label prop to determine label text or render
    * Note: pass a simple ' ' string for no label rendering
    */
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  label: oneOfType([string, object]),
 
   /**
    * Used to paint a label to the right of the checkbox
    * Note: this is a duplicate prop for the sake of better component usability
    */
-  labelAlign: PropTypes.oneOf(['left', 'right']),
+  labelAlign: oneOf(['left', 'right']),
 
   /**
    * Used to determine whether or not to render label text as to only render a standalone radio button
@@ -131,27 +131,27 @@ RadioButton.propTypes = {
   /**
    * Used to determine whether or not to align the radio button inline
    */
-  inline: PropTypes.bool,
+  inline: bool,
 
   /**
    * Used to determine whether or not to paint an additional space above the radio button as to align it with text fields
    */
-  alignWithFields: PropTypes.bool,
+  alignWithFields: bool,
 
   /**
    * Used to disable interaction with the radio button component
    */
-  disabled: PropTypes.bool,
+  disabled: bool,
 
   /**
    * Used to determine whether or not to run stopPropagation() on checkbox click events
    */
-  stopPropagation: PropTypes.bool,
+  stopPropagation: bool,
 
   /**
    * A callback function for when the user toggles the radio button
    */
-  onChange: PropTypes.func.isRequired
+  onChange: func.isRequired
 }
 
 RadioButton.defaultProps = {

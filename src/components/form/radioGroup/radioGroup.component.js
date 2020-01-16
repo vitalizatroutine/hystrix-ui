@@ -1,5 +1,5 @@
 import React, { memo } from 'react'
-import PropTypes from 'prop-types'
+import { string, object, bool, func, shape, oneOf, arrayOf, oneOfType } from 'prop-types'
 import { getClassName } from '../../../utils/'
 import RadioButton from '../radioButton'
 import './radioGroup.component.css'
@@ -39,38 +39,38 @@ RadioGroup.propTypes = {
   /**
    * A custom className for the component
    */
-  className: PropTypes.string,
+  className: string,
 
   /**
    * Used to determine the label for the radio-group
    */
-  label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+  label: oneOfType([string, object]),
 
   /**
    * Used to determine the direction of how the radio-buttons flow
    */
-  direction: PropTypes.oneOf(['horizontal', 'vertical']),
+  direction: oneOf(['horizontal', 'vertical']),
 
   /**
    * Shared props for each radio-button
    * Note: See RadioButton propTypes for documentation
    */
-  name: PropTypes.string.isRequired,
-  theme: PropTypes.string,
-  size: PropTypes.oneOf(['small', 'default', 'large']),
-  labelAlign: PropTypes.oneOf(['left', 'right']),
-  onChange: PropTypes.func.isRequired,
+  name: string.isRequired,
+  theme: string,
+  size: oneOf(['small', 'default', 'large']),
+  labelAlign: oneOf(['left', 'right']),
+  onChange: func.isRequired,
 
   /**
    *
    */
-  options: PropTypes.arrayOf(PropTypes.shape({
-    className: PropTypes.string,
-    id: PropTypes.string.isRequired,
-    label: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
-    checked: PropTypes.bool.isRequired,
-    customRadioButtonColor: PropTypes.string,
-    disabled: PropTypes.bool,
+  options: arrayOf(shape({
+    className: string,
+    id: string.isRequired,
+    label: oneOfType([string, object]),
+    checked: bool.isRequired,
+    customRadioButtonColor: string,
+    disabled: bool,
   }))
 }
 

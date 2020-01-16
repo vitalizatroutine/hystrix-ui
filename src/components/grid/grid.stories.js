@@ -1,34 +1,28 @@
 import React from 'react'
 import { storiesOf } from '@storybook/react'
+import { text, boolean } from '@storybook/addon-knobs'
 
-import { Customizer, FillerBlock } from '../../storybookComponents'
-import Grid from './grid.component'
-import GridColumn from './column/gridColumn.component'
+import { FillerBlock } from '../../storybookComponents'
+import { Grid, GridColumn, Layout } from '../../components'
 
-const propConfig = [{
-  field: 'className',
-  type: 'text',
-  initialValue: '',
-  placeholder: 'grid--custom'
-}, {
-  field: 'gutter',
-  type: 'boolean',
-  initialValue: true
-}]
+storiesOf('Grid', module).add('Default', () => {
+  const propConfig = {
+    className: text('className', 'grid--custom'),
+    id: text('className', 'customGrid'),
+    gutter: boolean('gutter', true)
+  }
 
-storiesOf('Grid', module).add('Default', () => (
-  <Customizer
-    config={propConfig}
-    component={(
-      <Grid>
+  return (
+    <Layout theme='dark' height='fill'>
+      <Grid {...propConfig} >
         <GridColumn width='1-of-4' smallWidth='1-of-3'><FillerBlock /></GridColumn>
         <GridColumn width='1-of-4' smallWidth='1-of-3'><FillerBlock /></GridColumn>
         <GridColumn width='1-of-4' smallWidth='1-of-3'><FillerBlock /></GridColumn>
         <GridColumn width='1-of-4' smallWidth='1-of-3'><FillerBlock /></GridColumn>
       </Grid>
-    )}
-  />
-))
+    </Layout>
+  )
+})
 
 export default {
   title: 'Grid',

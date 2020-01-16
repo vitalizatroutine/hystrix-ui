@@ -2,23 +2,22 @@ import React from 'react'
 import { storiesOf } from '@storybook/react'
 import { text } from '@storybook/addon-knobs'
 
-import { KeyboardListenerProvider } from '../../context'
 import { Layout } from '../../components'
 import Select from './select.component'
 
 storiesOf('Select', module).add('Default', () => {
   const propConfig = {
     className: text('className', 'select--custom'),
+    id: text('id', 'customSelect'),
+    name: text('name', 'selectValue'),
     theme: 'envy',
-    forceMenuOpen: true
+    forceMenuOpen: false
   }
 
   return (
-    <KeyboardListenerProvider>
-      <Layout flex alignItems='center' justifyContent='center' height='comfy'>
-        <Select {...propConfig} />
-      </Layout>
-    </KeyboardListenerProvider>
+    <Layout height='fill'>
+      <Select {...propConfig} />
+    </Layout>
   )
 })
 

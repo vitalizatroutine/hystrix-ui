@@ -1,5 +1,5 @@
 import React, { PureComponent, cloneElement } from 'react'
-import PropTypes from 'prop-types'
+import { string, shape, arrayOf } from 'prop-types'
 import { isUndefined, groupBy } from 'lodash'
 import { Checkbox, Field, Grid, GridColumn, RadioGroup } from '../../components'
 import { Layout } from '../../components'
@@ -159,8 +159,8 @@ class Customizer extends PureComponent {
 }
 
 Customizer.propTypes = {
-  config: PropTypes.arrayOf(PropTypes.shape({
-    field: PropTypes.string.isRequired
+  config: arrayOf(shape({
+    field: string.isRequired
   })).isRequired
 }
 

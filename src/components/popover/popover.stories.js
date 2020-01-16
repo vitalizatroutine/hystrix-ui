@@ -70,7 +70,7 @@ storiesOf('Popover', module).add('Using Ref', () => {
   }
 
   return (
-    <Layout flex alignItems='center' justifyContent='center' height='fill'>
+    <Layout theme='dark' height='fill'>
       <FillerBlock ref={fillerRef} style={fillerBlockStyle} onClick={() => setClickCount(clickCount + 1)} />
       <Popover {...propConfig}>
         <FillerBlock theme='slate' placeholder='Popover Content' />
@@ -132,7 +132,7 @@ storiesOf('Popover', module).add('Using Ref', () => {
   }
 
   return (
-    <Layout flex alignItems='center' justifyContent='center' height='fill'>
+    <Layout theme='dark' height='fill'>
       <FillerBlock id='storyTargetOne' style={fillerBlockStyle} onClick={() => setClickCount(clickCount + 1)} />
       <Popover {...propConfig}>
         <FillerBlock theme='slate' placeholder='Popover Content' />
